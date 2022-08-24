@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="550dp"
+        android:layout_marginRight="165dp"
+        android:text="내가\n만들어내는\n미라클 시작하기"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/loginActivity_textview_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="30dp"
+        android:text="아이디(id)"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/loginActivity_edittext_id"
+        android:hint="e-mail"
+        android:layout_alignStart="@+id/loginActivity_textview_id"
+        android:layout_alignTop="@+id/loginActivity_textview_id"
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/loginActivity_textview_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="30dp"
+        android:text="비밀번호(PW)"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/loginActivity_edittext_password"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:layout_alignStart="@+id/loginActivity_textview_password"
+        android:layout_alignTop="@+id/loginActivity_textview_password"
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/loginActivity_button_login"
+        android:src="@drawable/login_button"
+        android:layout_marginTop="450dp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"/>
+
+    <ImageButton
+        android:id="@+id/loginActivity_button_signup"
+        android:src="@drawable/signup_button"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
