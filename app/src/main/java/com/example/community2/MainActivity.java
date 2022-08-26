@@ -8,7 +8,15 @@ import android.view.MenuItem;
 
 import com.example.community2.fragment.ChatFragment;
 import com.example.community2.fragment.CommunityFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +39,22 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+        passPushTokenServer();
+    }
+
+    void passPushTokenServer() {
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Map<String, Object> map = new HashMap<>();
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if(task.isSuccessful()) {
+                    String token = task.getResult();
+                    map.put("pushToken", token);
+                    FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);
+                }
             }
         });
     }

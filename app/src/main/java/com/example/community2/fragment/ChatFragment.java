@@ -1,5 +1,8 @@
 package com.example.community2.fragment;
 
+import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +16,27 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.community2.R;
+import com.example.community2.chat.MessageActivity;
 import com.example.community2.model.ChatModel;
+import com.example.community2.model.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
+import java.util.TreeMap;
 
 public class ChatFragment extends Fragment {
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,7 +49,10 @@ public class ChatFragment extends Fragment {
 
     class ChatRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private List<ChatModel> chatModels = new ArrayList<>();
+        private List<String> keys = new ArrayList<>();
         private String uid;
+        private ArrayList<String> destinationUsers = new ArrayList<>();
+
         public ChatRecyclerViewAdapter() {
             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -64,9 +80,54 @@ public class ChatFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             CustomViewHolder customViewHolder = (CustomViewHolder) holder;
+            //이 부분도 나중에 단체 채팅방 만들면서 수정하기 (동영상 #15 4:20)
+            String destinationUid = null;
 
+            //챗방에 있는 유저를 모두 체크하는 부분.
+            for(String user : chatModels.get(position).users.keySet()) {
+                if(!user.equals(uid)) {
+                    destinationUid = user;
+                    destinationUsers.add(destinationUid);
+                }
+            }
+            FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                            customViewHolder.textView_title.setText(chatModels.get(position).roomName);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+            //마지막 메세지가 보이도록 하는 작업.
+            Map<String, ChatModel.Comment> commentMap = new TreeMap<>(Collections.reverseOrder());
+            commentMap.putAll(chatModels.get(position).comments);
+            if(commentMap.keySet().toArray().length > 0) {
+                String lastMessageKey = (String) commentMap.keySet().toArray()[0];
+                customViewHolder.textView_last_message.setText(chatModels.get(position).comments.get(lastMessageKey).message);
+
+                //대화방 목록에서 timestamp 나타내기.
+                simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+                long unixTime = (long) chatModels.get(position).comments.get(lastMessageKey).timestamp;
+                Date date = new Date(unixTime);
+                customViewHolder.textView_timestamp.setText(simpleDateFormat.format(date));
+            }
+            //대화방 누르면 대화목록이 뜨도록 하는 부분(옆으로 밀리는 애니메이션 추가)
+            customViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), MessageActivity.class);
+                    intent.putExtra("destinationRoom", keys.get(position));
+                    ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.from_right, R.anim.to_left);
+                    startActivity(intent, activityOptions.toBundle());
+                }
+            });
         }
 
         @Override

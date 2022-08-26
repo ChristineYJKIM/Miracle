@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="75dp">
 
     <LinearLayout
         android:id="@+id/communityItem_linearlayout"
-        android:layout_margin="10dp"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="InvalidId">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/communityItem_textview_name"
@@ -23,23 +21,19 @@
 
         <TextView
             android:id="@+id/communityItem_textview_explain"
-            android:text="커뮤니티 설명"
-            android:textSize="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="커뮤니티 설명"
+            android:textSize="20dp"/>
 
-    </LinearLayout>
+        <LinearLayout
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp">
+        </LinearLayout>
 
-    <ImageView
-        android:id="@+id/communityItem_imageview"
-        android:layout_marginLeft="150dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
-
-    <LinearLayout
-        android:background="@android:color/darker_gray"
-        android:layout_width="match_parent"
-        android:layout_height="1dp">
     </LinearLayout>
 
 </LinearLayout>
