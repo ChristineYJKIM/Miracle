@@ -51,16 +51,17 @@ public class ChatFragment extends Fragment {
         private List<ChatModel> chatModels = new ArrayList<>();
         private List<String> keys = new ArrayList<>();
         private String uid;
-        private ArrayList<String> destinationUsers = new ArrayList<>();
 
         public ChatRecyclerViewAdapter() {
             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).equalTo(true)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     chatModels.clear();
                     for(DataSnapshot item : snapshot.getChildren()) {
                         chatModels.add(item.getValue(ChatModel.class));
+                        keys.add(item.getKey());
                     }
                     notifyDataSetChanged();
                 }
@@ -82,29 +83,9 @@ public class ChatFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             CustomViewHolder customViewHolder = (CustomViewHolder) holder;
-            //이 부분도 나중에 단체 채팅방 만들면서 수정하기 (동영상 #15 4:20)
-            String destinationUid = null;
 
-            //챗방에 있는 유저를 모두 체크하는 부분.
-            for(String user : chatModels.get(position).users.keySet()) {
-                if(!user.equals(uid)) {
-                    destinationUid = user;
-                    destinationUsers.add(destinationUid);
-                }
-            }
-            FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid)
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            UserModel userModel = dataSnapshot.getValue(UserModel.class);
-                            customViewHolder.textView_title.setText(chatModels.get(position).roomName);
-                        }
+            customViewHolder.textView_title.setText(chatModels.get(position).roomName);
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
             //마지막 메세지가 보이도록 하는 작업.
             Map<String, ChatModel.Comment> commentMap = new TreeMap<>(Collections.reverseOrder());
             commentMap.putAll(chatModels.get(position).comments);
@@ -123,7 +104,7 @@ public class ChatFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), MessageActivity.class);
-                    intent.putExtra("destinationRoom", keys.get(position));
+                    intent.putExtra("roomId", keys.get(position));
                     ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.from_right, R.anim.to_left);
                     startActivity(intent, activityOptions.toBundle());
                 }

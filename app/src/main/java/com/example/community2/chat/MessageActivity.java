@@ -51,7 +51,7 @@ public class MessageActivity extends AppCompatActivity {
     private EditText text;  //메세지 입력부분
     private RecyclerView recyclerView;  //이전 메세지들이 뜨도록 하는 recyclerview
     private String myuid;   //현재 로그인한 아이디
-    private String uid; //채팅방으로 들어온 아이디
+    private String uid = null; //채팅방으로 들어온 아이디
     private String roomId;  //현재 속한 채팅방
 
     Map<String, UserModel> users = new HashMap<>();
@@ -98,7 +98,7 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //채팅방으로 들어와서 메세지를 보낸 아이디가 내가 로그인한 아이디와 같지 않으면 채팅방 유저에 추가해주기.
-                if(myuid != uid) {
+                if(myuid != uid && uid != null) {
                     Map<String, Object> user = new HashMap<>();
                     user.put(uid, true);
                     FirebaseDatabase.getInstance().getReference().child("chatrooms").child(roomId).child("users").updateChildren(user);
