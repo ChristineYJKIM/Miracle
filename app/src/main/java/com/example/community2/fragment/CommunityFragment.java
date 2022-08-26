@@ -6,10 +6,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,12 +33,14 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class CommunityFragment extends Fragment {
@@ -43,14 +48,38 @@ public class CommunityFragment extends Fragment {
     EditText explain;
     LinearLayout dialogView;
     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    List<String> keys = new ArrayList<>();
+
+    EditText editText_search;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_community, container, false);
+
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.communityFragment_recyclerview);
+        editText_search = (EditText) view.findViewById(R.id.communityFragment_edittext);
+
+        CommunityFragmentRecyclerViewAdapter adapter = new CommunityFragmentRecyclerViewAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
-        recyclerView.setAdapter(new CommunityFragmentRecyclerViewAdapter());
+        recyclerView.setAdapter(adapter);
+
+        editText_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                adapter.getFilter().filter(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.communityFragment_floatingbutton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -87,18 +116,21 @@ public class CommunityFragment extends Fragment {
     }
 
     class CommunityFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-        List<ChatModel> chatModels;
-        List<String> keys = new ArrayList<>();
+        List<ChatModel> unfilterList;
+        List<ChatModel> filterList;
 
         public CommunityFragmentRecyclerViewAdapter() {
-            chatModels = new ArrayList<>();
+            unfilterList = new ArrayList<>();
+            filterList = new ArrayList<>();
             FirebaseDatabase.getInstance().getReference().child("chatrooms").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    chatModels.clear();
+                    unfilterList.clear();
+                    filterList.clear();
                     for(DataSnapshot item : snapshot.getChildren()) {
                         ChatModel chatModel = item.getValue(ChatModel.class);
-                        chatModels.add(chatModel);
+                        unfilterList.add(chatModel);
+                        filterList.add(chatModel);
                         keys.add(item.getKey());
                     }
                     notifyDataSetChanged();
@@ -120,10 +152,8 @@ public class CommunityFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-            ((CustomViewHolder)holder).textView_name.setText(chatModels.get(position).roomName);
-            ((CustomViewHolder)holder).textView_explain.setText(chatModels.get(position).roomExplain);
-
-            ArrayList<ChatModel> search_list = new ArrayList<>();
+            ((CustomViewHolder)holder).textView_name.setText(filterList.get(position).roomName);
+            ((CustomViewHolder)holder).textView_explain.setText(filterList.get(position).roomExplain);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -139,7 +169,36 @@ public class CommunityFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return chatModels.size();
+            return filterList.size();
+        }
+
+        public Filter getFilter() {
+            return new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence charSequence) {
+                    String str = charSequence.toString();
+                    if(str.isEmpty()) {
+                        filterList = unfilterList;
+                    } else {
+                        List<ChatModel> filteringList = new ArrayList<>();
+                        for( ChatModel item : unfilterList) {
+                            if(item.roomName.toLowerCase().contains(str)) {
+                                filteringList.add(item);
+                            }
+                        }
+                        filterList = filteringList;
+                    }
+                    FilterResults filterResults = new FilterResults();
+                    filterResults.values = filterList;
+                    return filterResults;
+                }
+
+                @Override
+                protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                    filterList = (List<ChatModel>) filterResults.values;
+                    notifyDataSetChanged();
+                }
+            };
         }
 
         private class CustomViewHolder extends RecyclerView.ViewHolder {
