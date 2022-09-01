@@ -49,6 +49,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private ProgressDialog loader;
 
+    private TextView listBtn;
+
 
     //14강..이걸 왜 선언한걸까?
     private String key = "";
@@ -56,6 +58,8 @@ public class HomeActivity extends AppCompatActivity {
     private String description;
 
 
+
+    //앱을 나가더라도 데이터 값이 저장될 수 있게끔 해주는 함수입니다~
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +81,8 @@ public class HomeActivity extends AppCompatActivity {
 
         loader = new ProgressDialog(this);
 
+        listBtn = findViewById(R.id.list_todo);
+
 
         //9강이다.....
         //여기가 문제네...문제해결했어!
@@ -95,9 +101,15 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
+
+
     }
 
 
+
+
+
+    //데이터를 추가하는 거구나
     private void add() {
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -132,15 +144,15 @@ public class HomeActivity extends AppCompatActivity {
 
 
             if (TextUtils.isEmpty(mTask)) {
-                task.setError("task required");
+                task.setError("루틴을 적어주세요");
                 return;
             }
 
             if (TextUtils.isEmpty(mDescription)) {
-                description.setError("Description required");
+                description.setError("설명도 적어주세요");
                 return;
             } else {
-                loader.setMessage("Adding your data");
+                loader.setMessage("데이터를 추가합니다~");
                 loader.setCanceledOnTouchOutside(false);
                 loader.show();
 
@@ -149,11 +161,11 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(HomeActivity.this, "Task has been inserted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "루틴이 추가되었습니다", Toast.LENGTH_SHORT).show();
                             loader.dismiss();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(HomeActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "저장실패", Toast.LENGTH_SHORT).show();
                             loader.dismiss();
                         }
                     }
@@ -218,8 +230,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    //리사이클러뷰가 나오게끔 클래스와 객체 생성
-    //여기도 12강..
+    //리사이클러뷰가 나오게끔 클래스와 객체 생성하고 세팅함...
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         View mView;
 
@@ -328,18 +339,27 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
 
 
-            case R.id.logout:
+          /*  case R.id.go_calendar:
+                Intent intent = new Intent(HomeActivity.this, CalendarActivity.class);
+                startActivity(intent); */
+
+
+
+            case R.id.logout :
                 mAuth.signOut();
                 Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
+
 
         }
         return super.onOptionsItemSelected(item);

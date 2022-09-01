@@ -1,6 +1,7 @@
 package com.example.please_last_java_project;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.ProgressBar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -27,6 +30,8 @@ public class CalendarActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
 
+
+    //파이어베이스에서 데이터를 갖고와야 하니까
     private DatabaseReference reference;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -34,6 +39,8 @@ public class CalendarActivity extends AppCompatActivity {
 
     private String key = "";
     private String task;
+
+    private TextView listCalendar;
 
 
 
@@ -48,6 +55,10 @@ public class CalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
+
+
+        //calendar_task를 리사이클러뷰에 띄워서 실행시켜야해
+        //여기에 파이어베이스 데이터값을 띄우고싶어
         recyclerView = findViewById(R.id.calendar_recyclerview);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -60,79 +71,70 @@ public class CalendarActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         onlineUserId = mUser.getUid();
-        reference = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserId);
+        DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserId);
+        listCalendar = findViewById(R.id.go_to_calendar);
 
     }
 
 
-    @Override
-    protected void onStart(){
-        super.onStart();
+    //단추를 잘못 끼웠다..
+    //캘린더 구현하고 거기 날짜마다 데이터를 넣는 방법을 나는 알지 못한다
+    //그리고 그거에 맞춰서 테스크를 만들어야 하는데...
+    //테스크를 먼저 만들어버려서 일이 꼬였다
+    //그럼 엎어야지
+    //그렇다면 지금 내가 노력하는 파트는, 파이어베이스에서 어떻게 데이터값을 가져오느냐!
+    //여기에 집중해야겠구나.
 
-        FirebaseRecyclerOptions<Model> options = new FirebaseRecyclerOptions.Builder<Model>()
-                .setQuery(reference, Model.class)
-                .build();
 
-        FirebaseRecyclerAdapter<Model, HomeActivity.MyViewHolder> adapter = new FirebaseRecyclerAdapter<Model, HomeActivity.MyViewHolder>(options) {
+    //데이터를 어떻게 가져올까
+    private void dataShow(){
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View myView = inflater.inflate(R.layout.todo_retrive, null);
+        myDialog.setView(myView);
+
+        AlertDialog dialog = myDialog.create();
+        dialog.setCancelable(false);
+
+        CheckBox check = myView.findViewById(R.id.todoCheckBox);
+
+
+
+        check.setOnClickListener(new View.OnClickListener(){
             @Override
-            protected void onBindViewHolder(@NonNull HomeActivity.MyViewHolder holder, @SuppressLint("RecyclerView")  int position, @NonNull Model model) {
-                holder.setDate(model.getDate());
-                holder.setTask(model.getTask());
-                holder.setDesc(model.getDescription());
+            public void onClick(View v){
+                FirebaseRecyclerOptions<Model> options = new FirebaseRecyclerOptions.Builder<Model>()
+                        .setQuery(reference, Model.class)
+                        .build();
 
+                FirebaseRecyclerAdapter<Model, HomeActivity.MyViewHolder> adapter = new FirebaseRecyclerAdapter<Model, HomeActivity.MyViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull HomeActivity.MyViewHolder holder, int position, @NonNull Model model) {
+                        holder.setDate(model.getDate());
+                        holder.setTask(model.getTask());
+                        holder.setDesc(model.getDescription());
+                    }
 
-                //휴...14강이다..!! 한 번 해보자구!!
-                //position을 적어버리면 위에 INT position에서 에러가 떠버리는 걸?
-                holder.mView.setOnClickListener(new View.OnClickListener() {
+                    @NonNull
+                    @Override
+                    public HomeActivity.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        return null;
+                    }
+                };
+
+                listCalendar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        key = getRef(position).getKey();
-                        task = model.getTask();
-
-
+                        Intent intent = new Intent(CalendarActivity.this, HomeActivity.class);
+                        startActivity(intent);
                     }
                 });
 
             }
+        });
 
 
-
-
-            @NonNull
-            @Override
-            public HomeActivity.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.retrieved_layout,parent, false);
-                return new HomeActivity.MyViewHolder(view);
-            }
-        };
-
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.go_todo:
-                Intent intent = new Intent(CalendarActivity.this, HomeActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
 }
-
-
-
