@@ -1,18 +1,23 @@
 package com.example.community2.chat;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,7 +31,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.community2.R;
 import com.example.community2.model.ChatModel;
 import com.example.community2.model.UserModel;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +42,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,6 +63,10 @@ public class MessageActivity extends AppCompatActivity {
     private String myuid;   //현재 로그인한 아이디
     private String uid = null; //채팅방으로 들어온 아이디
     private String roomId;  //현재 속한 채팅방
+
+    private ImageView imageView;
+    private static final int PICK_FROM_ALBUM = 10;
+    private Uri imageUri;
 
     Map<String, UserModel> users = new HashMap<>();
     List<ChatModel.Comment> comments = new ArrayList<>();
@@ -93,6 +107,67 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     void init() {
+        imageView = (ImageView) findViewById(R.id.messageActivity_imageview);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(myuid != uid && uid != null) {
+                    Map<String, Object> user = new HashMap<>();
+                    user.put(uid, true);
+                    FirebaseDatabase.getInstance().getReference().child("chatrooms").child(roomId).child("users").updateChildren(user);
+                }
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+                startActivityForResult(intent, PICK_FROM_ALBUM);
+            }
+        });
+        final StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images").child(myuid);
+        if(imageUri != null) {
+            imageRef.putFile(imageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if(!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+                    return imageRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if(task.isSuccessful()) {
+                        Uri downUri = task.getResult();
+                        String imageUri = downUri.toString();
+                        ChatModel.Comment comment = new ChatModel.Comment();
+                        comment.uid = myuid;
+                        comment.message = "photo";
+                        comment.timestamp = ServerValue.TIMESTAMP;
+                        FirebaseDatabase.getInstance().getReference().child("chatrooms").child(roomId).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                FirebaseDatabase.getInstance().getReference().child("chatrooms").child(roomId).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        Map<String, Boolean> map = (Map<String, Boolean>) snapshot.getValue();
+                                        for(String item : map.keySet()) {
+                                            if(item.equals(myuid)) {
+                                                continue;
+                                            }
+                                            sendFcm(users.get(item).pushToken);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
         ImageButton send = (ImageButton) findViewById(R.id.messageActivity_button);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +219,7 @@ public class MessageActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("to", pushToken);
             JSONObject notification = new JSONObject();
-            notification.put("title", FirebaseAuth.getInstance().getCurrentUser().getDisplayName().toString());
+            notification.put("title", FirebaseDatabase.getInstance().getReference().child("users").child(myuid).child("userName").toString());
             notification.put("body", text.getText().toString().trim());
             jsonObject.put("notification", notification);
 
@@ -294,6 +369,7 @@ public class MessageActivity extends AppCompatActivity {
             public TextView textView_timestamp;
             public TextView textView_readCounter_left;
             public TextView textView_readCounter_right;
+            public ImageView imageView;
 
             public MessageViewHolder(View view) {
                 super(view);
@@ -304,7 +380,16 @@ public class MessageActivity extends AppCompatActivity {
                 textView_timestamp = (TextView) view.findViewById(R.id.messageItem_textview_timestamp);
                 textView_readCounter_left = (TextView) view.findViewById(R.id.messageItem_textview_readCounter_left);
                 textView_readCounter_right = (TextView) view.findViewById(R.id.messageItem_textview_readCounter_right);
+                imageView = (ImageView) view.findViewById(R.id.messageItem_imageview);
             }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_FROM_ALBUM && resultCode == RESULT_OK) {
+            imageUri = data.getData();
         }
     }
 }
