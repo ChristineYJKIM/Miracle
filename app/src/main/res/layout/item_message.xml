@@ -27,13 +27,13 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="메세지"
             android:id="@+id/messageItem_textView_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/messageItem_imageview"
+            android:adjustViewBounds="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

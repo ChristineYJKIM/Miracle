@@ -12,6 +12,7 @@ public class ChatModel {
     public static class Comment {
         public String uid;
         public String message;
+        public String imageUrl;
         public Object timestamp;
         public Map<String, Object> readUsers = new HashMap<>();
     }
