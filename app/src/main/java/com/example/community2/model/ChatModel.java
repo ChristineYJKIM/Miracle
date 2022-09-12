@@ -15,5 +15,20 @@ public class ChatModel {
         public String imageUrl;
         public Object timestamp;
         public Map<String, Object> readUsers = new HashMap<>();
+
+        public Comment() {
+        }
+
+        public Comment(String imageUrl) {
+            this.imageUrl = imageUrl;
+        }
+
+        public String getImageUrl() {
+            return imageUrl;
+        }
+
+        public void setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+        }
     }
 }
