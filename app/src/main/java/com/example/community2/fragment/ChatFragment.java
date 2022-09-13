@@ -95,7 +95,11 @@ public class ChatFragment extends Fragment {
             commentMap.putAll(chatModels.get(position).comments);
             if(commentMap.keySet().toArray().length > 0) {
                 String lastMessageKey = (String) commentMap.keySet().toArray()[0];
-                customViewHolder.textView_last_message.setText(chatModels.get(position).comments.get(lastMessageKey).message);
+                if(chatModels.get(position).comments.get(lastMessageKey).message == null) {
+                    customViewHolder.textView_last_message.setText("photo");
+                } else {
+                    customViewHolder.textView_last_message.setText(chatModels.get(position).comments.get(lastMessageKey).message);
+                }
 
                 //대화방 목록에서 timestamp 나타내기.
                 simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
