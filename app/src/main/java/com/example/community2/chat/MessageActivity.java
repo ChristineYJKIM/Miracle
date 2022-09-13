@@ -249,12 +249,12 @@ public class MessageActivity extends AppCompatActivity {
                             FirebaseDatabase.getInstance().getReference().child("chatrooms").child(roomId).child("comments").updateChildren(readUserMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    notifyDataSetChanged();
+                                    notifyItemInserted(comments.size() + 1);
                                     recyclerView.scrollToPosition(comments.size()-1);
                                 }
                             });
                         } else {
-                            notifyDataSetChanged();
+                            notifyItemInserted(comments.size() + 1);
                             recyclerView.scrollToPosition(comments.size()-1);
                         }
                     }
@@ -281,9 +281,12 @@ public class MessageActivity extends AppCompatActivity {
             if(comments.get(position).uid.equals(myuid)) {
                 if(comments.get(position).imageUrl == null) {
                     messageViewHolder.imageView_selectPhoto.setVisibility(View.GONE);
+                    messageViewHolder.textView_message.setVisibility(View.VISIBLE);
                     messageViewHolder.textView_message.setText(comments.get(position).message);
                     messageViewHolder.textView_message.setBackgroundResource(R.drawable.rightbubble);
                 } else {
+                    messageViewHolder.textView_message.setVisibility(View.GONE);
+                    messageViewHolder.imageView_selectPhoto.setVisibility(View.VISIBLE);
                     Glide.with(MessageActivity.this).load(comments.get(position).imageUrl).into(messageViewHolder.imageView_selectPhoto);
                 }
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
@@ -293,9 +296,12 @@ public class MessageActivity extends AppCompatActivity {
             } else {
                 if(comments.get(position).imageUrl == null) {
                     messageViewHolder.imageView_selectPhoto.setVisibility(View.GONE);
+                    messageViewHolder.textView_message.setVisibility(View.VISIBLE);
                     messageViewHolder.textView_message.setText(comments.get(position).message);
                     messageViewHolder.textView_message.setBackgroundResource(R.drawable.leftbubble);
                 } else {
+                    messageViewHolder.textView_message.setVisibility(View.GONE);
+                    messageViewHolder.imageView_selectPhoto.setVisibility(View.VISIBLE);
                     Glide.with(MessageActivity.this).load(comments.get(position).imageUrl).into(messageViewHolder.imageView_selectPhoto);
                 }
                 messageViewHolder.textView_name.setText(users.get(comments.get(position).uid).userName);
@@ -378,7 +384,7 @@ public class MessageActivity extends AppCompatActivity {
             if(result.getResultCode() == RESULT_OK && result.getData() != null) {
                 imageUri = result.getData().getData();
                 uploadToFirebase(imageUri);
-                messageRecyclerViewAdapter.notifyDataSetChanged();
+                messageRecyclerViewAdapter.notifyItemInserted(comments.size() + 1);
             }
         }
     });
