@@ -76,6 +76,7 @@ public class MessageActivity extends AppCompatActivity {
     private String myuid;   //현재 로그인한 아이디
     private String uid = null; //채팅방으로 들어온 아이디
     private String roomId;  //현재 속한 채팅방
+    private String roomName;
     private ProgressBar progressBar;
 
     private ImageView imageView;
@@ -101,6 +102,7 @@ public class MessageActivity extends AppCompatActivity {
         myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         uid = getIntent().getStringExtra("uid");
         roomId = getIntent().getStringExtra("roomId");
+        roomName = getIntent().getStringExtra("roomName");
         progressBar = findViewById(R.id.messageActivity_progressbar);
         progressBar.setVisibility(View.INVISIBLE);
 
@@ -195,7 +197,7 @@ public class MessageActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("to", pushToken);
             JSONObject notification = new JSONObject();
-            notification.put("title", FirebaseDatabase.getInstance().getReference().child("users").child(myuid).child("userName").toString());
+            notification.put("title", roomName);
             notification.put("body", text.getText().toString().trim());
             jsonObject.put("notification", notification);
 

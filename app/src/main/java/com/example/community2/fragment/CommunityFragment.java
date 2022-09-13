@@ -161,6 +161,7 @@ public class CommunityFragment extends Fragment {
                     Intent intent = new Intent(view.getContext(), MessageActivity.class);
                     intent.putExtra("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                     intent.putExtra("roomId", keys.get(position));
+                    intent.putExtra("roomName", filterList.get(position).roomName);
                     ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.from_right,R.anim.to_left);
                     startActivity(intent, activityOptions.toBundle());
                 }

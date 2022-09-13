@@ -113,6 +113,7 @@ public class ChatFragment extends Fragment {
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), MessageActivity.class);
                     intent.putExtra("roomId", keys.get(position));
+                    intent.putExtra("roomName", chatModels.get(position).roomName);
                     ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.from_right, R.anim.to_left);
                     startActivity(intent, activityOptions.toBundle());
                 }
