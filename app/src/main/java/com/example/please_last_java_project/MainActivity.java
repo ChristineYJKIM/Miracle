@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         opening = findViewById(R.id.opening);
 
         new Handler().postDelayed(new Runnable() {

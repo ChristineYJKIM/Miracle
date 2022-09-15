@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,9 +18,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -33,6 +38,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -50,12 +56,16 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressDialog loader;
 
     private TextView listBtn;
+    private EditText datestart;
+    private EditText dateclose;
 
 
     //14강..이걸 왜 선언한걸까?
     private String key = "";
     private String task;
     private String description;
+    private String date1;
+    private String date2;
 
 
 
@@ -83,8 +93,6 @@ public class HomeActivity extends AppCompatActivity {
 
         listBtn = findViewById(R.id.list_todo);
 
-
-        //9강이다.....
         //여기가 문제네...문제해결했어!
         mAuth = FirebaseAuth.getInstance(); //이 친구를 잊지마!! 데이터 연동시켜주는 아이야~중요함!
         mUser = mAuth.getCurrentUser();
@@ -106,26 +114,83 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
-
-
-    //데이터를 추가하는 거구나
+    //데이터를 추가하는 거구나. 버튼을 클릭했어.
     private void add() {
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = LayoutInflater.from(this);
 
         View myView = inflater.inflate(R.layout.input_file, null);
+
         //다이얼로그 위젯 보이게끔 하기
         myDialog.setView(myView);
 
         //다이얼로그 이외의 창 만져도 괜찮게 설정
         AlertDialog dialog = myDialog.create();
         dialog.setCancelable(false);
-        //영상 8번까지는 완벽해
 
-        //10강이다...가망이 없어 지금..
+        datestart = myView.findViewById(R.id.dateStart);
+        dateclose = myView.findViewById(R.id.dateClose);
+
+
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener datePicker = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                updateCalendar();
+            }
+            private void updateCalendar(){
+                String Format = "yyyy/MM/dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(Format, Locale.KOREA);
+
+                datestart.setText(sdf.format(calendar.getTime()));
+                date1 = sdf.format(calendar.getTime());
+            }
+        };
+
+        datestart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(HomeActivity.this, datePicker, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        Calendar calendar2 = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener datePicker2 = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+                calendar2.set(Calendar.YEAR, year);
+                calendar2.set(Calendar.MONTH, month);
+                calendar2.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                updateCalendar();
+            }
+            private void updateCalendar(){
+                String Format = "yyyy/MM/dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(Format, Locale.KOREA);
+
+                dateclose.setText(sdf.format(calendar2.getTime()));
+                date2 = sdf.format(calendar2.getTime());
+            }
+        };
+
+        dateclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(HomeActivity.this, datePicker2, calendar2.get(Calendar.YEAR), calendar2.get(Calendar.MONTH),
+                        calendar2.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+        //가망이 없어 지금..
         final EditText task = myView.findViewById(R.id.task);
         final EditText description = myView.findViewById(R.id.description);
+
         Button save = myView.findViewById(R.id.saveBtn);
         Button cancel = myView.findViewById(R.id.cancelBtn);
 
@@ -137,10 +202,14 @@ public class HomeActivity extends AppCompatActivity {
             String mTask = task.getText().toString().trim();
             String mDescription = description.getText().toString().trim();
 
+
             //이걸 추가해야 밑에 에러가 사라짐
             //firebase에 데이터 입력시킬라고!
             String id = reference.push().getKey();
             String date = DateFormat.getDateInstance().format(new Date());
+
+
+            //이게 무슨 의미인지 확인해보자.
 
 
             if (TextUtils.isEmpty(mTask)) {
@@ -156,7 +225,7 @@ public class HomeActivity extends AppCompatActivity {
                 loader.setCanceledOnTouchOutside(false);
                 loader.show();
 
-                Model model = new Model(mTask, mDescription, id, date);
+                Model model = new Model(mTask, mDescription, id, date, date1, date2);
                 reference.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -177,12 +246,21 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    private DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            Toast.makeText(getApplicationContext(), year + "년" + monthOfYear + "월" + dayOfMonth +"일", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+
+
+
     //여기서 조심해야한다.생성자 작성할 때 에러가 뜨면 그 이유 원인 파악할 것
     //그리고 이게 왜 필요한지 생각하면서 코드치길 바람 :)
 
     //12강..firebase 실시간 데이터베이스 넣는 거 진행했어
     //파이어베이스 리사이클러뷰는 options(쿼리문)으로 DB에서 값을 자동으로 불러와준다
-    //12강까지 순조롭게 잘 왔다 ㅠㅠ흑흑..행복해...하..
     @Override
     protected void onStart() {
         super.onStart();
@@ -197,6 +275,7 @@ public class HomeActivity extends AppCompatActivity {
                 holder.setDate(model.getDate());
                 holder.setTask(model.getTask());
                 holder.setDesc(model.getDescription());
+            //    holder.date1(model.getDate());
 
 
                 //휴...14강이다..!! 한 번 해보자구!!
@@ -208,6 +287,8 @@ public class HomeActivity extends AppCompatActivity {
                         key = getRef(position).getKey();
                         task = model.getTask();
                         description = model.getDescription();
+                        date1 = model.getDate1();
+                        date2 = model.getDate2();
 
                         updateTask();
 
@@ -216,6 +297,9 @@ public class HomeActivity extends AppCompatActivity {
                 });
 
             }
+
+            //데이터피커 - 날짜 가져오기 - 파이어베이스에 데이터 날짜별로 넣기
+            //캘린더에 어떻게 띄우지?
 
             @NonNull
             @Override
@@ -253,10 +337,15 @@ public class HomeActivity extends AppCompatActivity {
             TextView dateTextView = mView.findViewById(R.id.dateTv);
 
         }
+
+        public void setDate2(String date2){
+            //여기에 캘린더 데이터값을 저장시킨다.
+
+        }
     }
 
 
-    //14강이다...
+    //할 일 업데이트하기
     private void updateTask() {
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -286,7 +375,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 String date = DateFormat.getDateInstance().format(new Date());
 
-                Model model = new Model(task, description, key, date);
+
+                Model model = new Model(task, description, key, date, date1, date2);
 
                 reference.child(key).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -346,11 +436,9 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
 
-
           /*  case R.id.go_calendar:
                 Intent intent = new Intent(HomeActivity.this, CalendarActivity.class);
                 startActivity(intent); */
-
 
 
             case R.id.logout :

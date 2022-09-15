@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         loader = new ProgressDialog(this);
 
 
-        //15강이다..아악 ....왤케 불안하니!
         //로그아웃 안했으면~바로 창이 home으로 넘어가진당!
        /* if(mAuth !=null){
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -59,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
 
             //클릭 눌러따!!
+
 
 
             public void onClick(View view) {

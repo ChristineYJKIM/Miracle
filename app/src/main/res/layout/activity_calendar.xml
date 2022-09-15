@@ -21,7 +21,9 @@
             android:layout_marginLeft="60dp"
             android:layout_marginTop="90dp"
             android:layout_marginRight="30dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            app:layout_anchor="@+id/calendar_recyclerview"
+            app:layout_anchorGravity="center" />
 
         <TextView
             android:id="@+id/go_to_calendar"
@@ -33,9 +35,31 @@
             android:textColor="#696969" />
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:id="@+id/diary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="일기를 작성해주세요"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
 
 
 

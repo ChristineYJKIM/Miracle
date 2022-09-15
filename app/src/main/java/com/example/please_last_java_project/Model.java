@@ -2,19 +2,26 @@ package com.example.please_last_java_project;
 
 public class Model {
 
-    private String task, description, id, date;
+    private String task, description, id, date, date1, date2;
 
     public Model(){
 
     }
 
 
-    public Model(String task, String description, String id, String date){
+
+    public Model(String task, String description, String id, String date, String date1, String date2){
 
         this.task = task;
         this.description = description;
         this.id = id;
         this.date = date;
+        this.date1 = date1;
+        this.date2 = date2;
+
+
+
+
     }
 
     public String getTask(){
@@ -37,8 +44,11 @@ public class Model {
 
     public void setId(String id) {this.id = id;}
 
-    public String getDate() {return date;}
+    public String getDate() { return date;}
 
-    public void setDate(String date) {this.date = date;}
+    public String getDate1() { return date1;}
+
+    public String getDate2() { return date2;}
+
 
 }

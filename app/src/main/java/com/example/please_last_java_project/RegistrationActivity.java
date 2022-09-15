@@ -31,16 +31,12 @@ public class RegistrationActivity extends AppCompatActivity {
     private ProgressDialog loader;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         mAuth = FirebaseAuth.getInstance();
         loader = new ProgressDialog(this);
-
-
 
 
         //각각 목록에 대한 양식들을 보여주는 고에요
@@ -120,6 +116,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 Toast.makeText(RegistrationActivity.this, "회원가입 실패", Toast.LENGTH_LONG).show();
 
                             }
+
 
                         }
 
