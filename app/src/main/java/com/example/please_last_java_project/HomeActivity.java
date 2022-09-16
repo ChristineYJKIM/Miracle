@@ -43,6 +43,9 @@ import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
 
+    //달력에 날짜 누르면 밑에 습관이 뜨게끔 해야한다
+    //
+
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
 
@@ -54,10 +57,13 @@ public class HomeActivity extends AppCompatActivity {
     private String onlineUserID;
 
     private ProgressDialog loader;
+    private FloatingActionButton calendarBtn;
 
-    private TextView listBtn;
+
     private EditText datestart;
     private EditText dateclose;
+
+
 
 
     //14강..이걸 왜 선언한걸까?
@@ -91,7 +97,6 @@ public class HomeActivity extends AppCompatActivity {
 
         loader = new ProgressDialog(this);
 
-        listBtn = findViewById(R.id.list_todo);
 
         //여기가 문제네...문제해결했어!
         mAuth = FirebaseAuth.getInstance(); //이 친구를 잊지마!! 데이터 연동시켜주는 아이야~중요함!
@@ -101,6 +106,8 @@ public class HomeActivity extends AppCompatActivity {
 
         //버튼 누르면 액션 실행할 수 있게끔 코딩
         floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton = findViewById(R.id.calendarBtn);
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,9 +116,19 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, RealCalendarActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
 
 
     }
+
 
 
     //데이터를 추가하는 거구나. 버튼을 클릭했어.
@@ -130,6 +147,7 @@ public class HomeActivity extends AppCompatActivity {
 
         datestart = myView.findViewById(R.id.dateStart);
         dateclose = myView.findViewById(R.id.dateClose);
+
 
 
         Calendar calendar = Calendar.getInstance();
@@ -187,7 +205,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        //가망이 없어 지금..
         final EditText task = myView.findViewById(R.id.task);
         final EditText description = myView.findViewById(R.id.description);
 
@@ -278,7 +295,6 @@ public class HomeActivity extends AppCompatActivity {
             //    holder.date1(model.getDate());
 
 
-                //휴...14강이다..!! 한 번 해보자구!!
                 //position을 적어버리면 위에 INT position에서 에러가 떠버리는 걸?
                 holder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -299,7 +315,6 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             //데이터피커 - 날짜 가져오기 - 파이어베이스에 데이터 날짜별로 넣기
-            //캘린더에 어떻게 띄우지?
 
             @NonNull
             @Override
@@ -357,12 +372,83 @@ public class HomeActivity extends AppCompatActivity {
 
         EditText mTask = view.findViewById(R.id.mEditTextTask);
         EditText mDescription = view.findViewById(R.id.mEditTextDescription);
+        EditText datestart2 = view.findViewById(R.id.dateStart2);
+        EditText dateclose2 = view.findViewById(R.id.dateClose2);
 
         mTask.setText(task);
         mTask.setSelection(task.length());
 
         mDescription.setText(description);
         mDescription.setSelection(description.length());
+
+        datestart2.setText(date1);
+        dateclose2.setText(date2);
+
+
+        //만약 클릭해서 변경하고 싶으면 날짜 수정하기
+        //캘린더 데이트 피커 띄우기 -> 수정
+        //파이어베이스에 루틴 기간 수정 가능하게끔 변경
+
+
+
+        Calendar mcalendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener datePicker = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+                mcalendar.set(Calendar.YEAR, year);
+                mcalendar.set(Calendar.MONTH, month);
+                mcalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                updateCalendar();
+            }
+            private void updateCalendar(){
+                String Format = "yyyy/MM/dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(Format, Locale.KOREA);
+
+                datestart2.setText(sdf.format(mcalendar.getTime()));
+                date1 = sdf.format(mcalendar.getTime());
+            }
+        };
+
+        datestart2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(HomeActivity.this, datePicker, mcalendar.get(Calendar.YEAR), mcalendar.get(Calendar.MONTH),
+                        mcalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+        Calendar mcalendar2 = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener datePicker2 = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+                mcalendar2.set(Calendar.YEAR, year);
+                mcalendar2.set(Calendar.MONTH, month);
+                mcalendar2.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                updateCalendar();
+            }
+            private void updateCalendar(){
+                String Format = "yyyy/MM/dd";
+                SimpleDateFormat sdf = new SimpleDateFormat(Format, Locale.KOREA);
+
+                dateclose2.setText(sdf.format(mcalendar2.getTime()));
+                date2 = sdf.format(mcalendar2.getTime());
+            }
+        };
+
+
+        dateclose2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(HomeActivity.this, datePicker2, mcalendar2.get(Calendar.YEAR), mcalendar2.get(Calendar.MONTH),
+                        mcalendar2.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+
 
         Button delButton = view.findViewById(R.id.btnDelete);
         Button updateButton = view.findViewById(R.id.btnUpdate);
@@ -375,18 +461,18 @@ public class HomeActivity extends AppCompatActivity {
 
                 String date = DateFormat.getDateInstance().format(new Date());
 
-
                 Model model = new Model(task, description, key, date, date1, date2);
+
 
                 reference.child(key).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
                         if (task.isSuccessful()) {
-                            Toast.makeText(HomeActivity.this, "Date has been update successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "업데이트 성공", Toast.LENGTH_SHORT).show();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(HomeActivity.this, "update failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "업데이트에 실패했습니다", Toast.LENGTH_SHORT).show();
 
                         }
                     }
@@ -396,6 +482,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+
+
         //14강...삭제버튼 누르면 액션 취하게끔 작성해야함!
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -404,10 +492,10 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(HomeActivity.this, "Task deleted successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "루틴 삭제 성공", Toast.LENGTH_SHORT).show();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(HomeActivity.this, "Failed to delete task", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "루틴 삭제 실패", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -419,6 +507,11 @@ public class HomeActivity extends AppCompatActivity {
         dialog.show();
 
     }
+
+
+
+
+
 
     //15강~~ 로그아웃 메뉴를 만들구에영!
     @Override

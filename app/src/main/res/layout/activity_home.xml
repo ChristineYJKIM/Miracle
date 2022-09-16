@@ -12,41 +12,46 @@
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="340dp"
-            android:layout_height="444dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginRight="40dp"
-            android:scrollbars="vertical"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="340dp"
+        android:layout_height="444dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="40dp"
+        android:scrollbars="vertical"
 
-            />
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginLeft="16dp"
+        android:src="@drawable/ic_baseline_add_24"
+        android:contentDescription="TODO" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/calendarBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/ic_baseline_add_24"
-            android:contentDescription="TODO" />
-
-        <TextView
-            android:id="@+id/list_todo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="40dp"
-            android:text="캘린더로"
-            android:textColor="#696969"
-            android:textSize="13dp" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_stat_name"
+            android:contentDescription="go_to_calendar" />
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 
 
 </LinearLayout>

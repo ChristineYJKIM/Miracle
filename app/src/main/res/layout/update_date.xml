@@ -123,7 +123,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="기간수정"
+                android:text="실행기간"
                 android:textColor="#000"
                 android:textStyle="bold" />
 

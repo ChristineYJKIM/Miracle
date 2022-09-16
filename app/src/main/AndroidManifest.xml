@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Please_last_java_project"
         tools:targetApi="31">
         <activity
+            android:name=".RealCalendarActivity"
+            android:exported="false" />
+        <activity
             android:name=".CalendarActivity"
             android:exported="false" />
         <activity

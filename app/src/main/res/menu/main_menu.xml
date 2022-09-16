@@ -5,9 +5,7 @@
     //로그아웃 하는 메뉴 기능을 넣어둔 거!
 
 
-    <item
-        android:id="@+id/go_calendar"
-        android:title="Calendar"/>
+
 
 
     <item
