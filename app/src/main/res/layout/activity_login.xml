@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/login_image"
-    tools:context=".LoginActivity"
+    android:background="@drawable/login_imageee"
+    tools:context=".loginActivity"
     >
 
 
