@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class registrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     //지역변수 설정해준다~~여기서만 사용되는 액희덜~ㅋ
     private EditText RegEmail, RegPwd, RegPwd2;
@@ -51,7 +51,7 @@ public class registrationActivity extends AppCompatActivity {
         RegQn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(registrationActivity.this, loginActivity.class);
+                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -76,17 +76,17 @@ public class registrationActivity extends AppCompatActivity {
                 }
 
                 if(RegPwd2.getText().toString().length() == 0) {
-                    Toast.makeText(registrationActivity.this, "패스워드 재확인 필수 입력", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this, "패스워드 재확인 필수 입력", Toast.LENGTH_SHORT).show();
                     RegPwd2.requestFocus();
                     return;
                 }
 
                 if(password.length()<6){
-                    Toast.makeText(registrationActivity.this, "비밀번호를 6자리 이상 입력해주세요", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistrationActivity.this, "비밀번호를 6자리 이상 입력해주세요", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if(!RegPwd.getText().toString().equals(RegPwd2.getText().toString())){
-                    Toast.makeText(registrationActivity.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistrationActivity.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_LONG).show();
                     RegPwd.setText("");
                     RegPwd2.setText("");
                     RegPwd.requestFocus();
@@ -105,15 +105,15 @@ public class registrationActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (task.isSuccessful()) {
-                                Toast.makeText(registrationActivity.this, "회원가입 성공", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(registrationActivity.this, loginActivity.class);
+                                Toast.makeText(RegistrationActivity.this, "회원가입 성공", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                                 startActivity(intent);
                                 finish();
                                 loader.dismiss();
 
                             } else {
                                 String error = task.getException().toString();
-                                Toast.makeText(registrationActivity.this, "회원가입 실패", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegistrationActivity.this, "회원가입 실패", Toast.LENGTH_LONG).show();
 
                             }
 

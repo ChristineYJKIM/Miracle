@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class calendarActivity extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity {
 
     /*todo, 일기장 : 날짜 설정만 하면 된다? - 타임스탬프 기능 이용*/
     //자바 투두 클래스 만들기 + 일기 클래스 만들기!
@@ -57,20 +57,20 @@ public class calendarActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID);
 
         CheckBox = findViewById(R.id.todoCheckBox);
-        FirebaseRecyclerOptions<MModel> options = new FirebaseRecyclerOptions.Builder<MModel>()
-                .setQuery(reference, MModel.class)
+        FirebaseRecyclerOptions<Model> options = new FirebaseRecyclerOptions.Builder<Model>()
+                .setQuery(reference, Model.class)
                 .build();
 
-        FirebaseRecyclerAdapter<MModel, homeActivity.MyViewHolder> adapter = new FirebaseRecyclerAdapter<MModel, homeActivity.MyViewHolder>(options) {
+        FirebaseRecyclerAdapter<Model, HomeActivity.MyViewHolder> adapter = new FirebaseRecyclerAdapter<Model, HomeActivity.MyViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull homeActivity.MyViewHolder holder, int position, @NonNull MModel model) {
+            protected void onBindViewHolder(@NonNull HomeActivity.MyViewHolder holder, int position, @NonNull Model model) {
                 //TODO 할 일만 갖고오기//
                 holder.setTask(model.getTask());
             }
 
             @NonNull
             @Override
-            public homeActivity.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public HomeActivity.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 return null;
             }
         };

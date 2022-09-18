@@ -1,16 +1,16 @@
 package com.example.please_last_java_project;
 
-public class MModel {
+public class Model {
 
     private String task, description, id, date, date1, date2;
 
-    public MModel(){
+    public Model(){
 
     }
 
 
 
-    public MModel(String task, String description, String id, String date, String date1, String date2){
+    public Model(String task, String description, String id, String date, String date1, String date2){
 
         this.task = task;
         this.description = description;

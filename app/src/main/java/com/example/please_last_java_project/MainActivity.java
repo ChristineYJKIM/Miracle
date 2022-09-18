@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-public class mainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private static final int SPLASH = 3300;
 
@@ -30,7 +30,7 @@ public class mainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(mainActivity.this, loginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

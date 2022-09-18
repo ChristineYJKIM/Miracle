@@ -41,7 +41,7 @@ import java.util.Date;
 import java.util.Locale;
 
 
-public class homeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     //달력에 날짜 누르면 밑에 습관이 뜨게끔 해야한다
     //
@@ -119,7 +119,7 @@ public class homeActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(homeActivity.this, RealCalendarActivity.class);
+                Intent intent = new Intent(HomeActivity.this, RealCalendarActivity.class);
                 startActivity(intent);
             }
 
@@ -136,7 +136,7 @@ public class homeActivity extends AppCompatActivity {
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = LayoutInflater.from(this);
 
-        View myView = inflater.inflate(R.layout.input_filee, null);
+        View myView = inflater.inflate(R.layout.input_file, null);
 
         //다이얼로그 위젯 보이게끔 하기
         myDialog.setView(myView);
@@ -172,7 +172,7 @@ public class homeActivity extends AppCompatActivity {
         datestart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(homeActivity.this, datePicker, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                new DatePickerDialog(HomeActivity.this, datePicker, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -199,7 +199,7 @@ public class homeActivity extends AppCompatActivity {
         dateclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(homeActivity.this, datePicker2, calendar2.get(Calendar.YEAR), calendar2.get(Calendar.MONTH),
+                new DatePickerDialog(HomeActivity.this, datePicker2, calendar2.get(Calendar.YEAR), calendar2.get(Calendar.MONTH),
                         calendar2.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -242,16 +242,16 @@ public class homeActivity extends AppCompatActivity {
                 loader.setCanceledOnTouchOutside(false);
                 loader.show();
 
-                MModel model = new MModel(mTask, mDescription, id, date, date1, date2);
+                Model model = new Model(mTask, mDescription, id, date, date1, date2);
                 reference.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(homeActivity.this, "루틴이 추가되었습니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "루틴이 추가되었습니다", Toast.LENGTH_SHORT).show();
                             loader.dismiss();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(homeActivity.this, "저장실패", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "저장실패", Toast.LENGTH_SHORT).show();
                             loader.dismiss();
                         }
                     }
@@ -282,13 +282,13 @@ public class homeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<MModel> options = new FirebaseRecyclerOptions.Builder<MModel>()
-                .setQuery(reference, MModel.class)
+        FirebaseRecyclerOptions<Model> options = new FirebaseRecyclerOptions.Builder<Model>()
+                .setQuery(reference, Model.class)
                 .build();
 
-        FirebaseRecyclerAdapter<MModel, MyViewHolder> adapter = new FirebaseRecyclerAdapter<MModel, MyViewHolder>(options) {
+        FirebaseRecyclerAdapter<Model, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Model, MyViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull MModel model) {
+            protected void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull Model model) {
                 holder.setDate(model.getDate());
                 holder.setTask(model.getTask());
                 holder.setDesc(model.getDescription());
@@ -319,7 +319,7 @@ public class homeActivity extends AppCompatActivity {
             @NonNull
             @Override
             public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.retrieved_layoutee, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.retrieved_layoute, parent, false);
                 return new MyViewHolder(view);
             }
         };
@@ -364,7 +364,7 @@ public class homeActivity extends AppCompatActivity {
     private void updateTask() {
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = LayoutInflater.from(this);
-        View view = inflater.inflate(R.layout.update_dateee, null);
+        View view = inflater.inflate(R.layout.update_date, null);
         myDialog.setView(view);
 
 
@@ -413,7 +413,7 @@ public class homeActivity extends AppCompatActivity {
         datestart2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(homeActivity.this, datePicker, mcalendar.get(Calendar.YEAR), mcalendar.get(Calendar.MONTH),
+                new DatePickerDialog(HomeActivity.this, datePicker, mcalendar.get(Calendar.YEAR), mcalendar.get(Calendar.MONTH),
                         mcalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -442,7 +442,7 @@ public class homeActivity extends AppCompatActivity {
         dateclose2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(homeActivity.this, datePicker2, mcalendar2.get(Calendar.YEAR), mcalendar2.get(Calendar.MONTH),
+                new DatePickerDialog(HomeActivity.this, datePicker2, mcalendar2.get(Calendar.YEAR), mcalendar2.get(Calendar.MONTH),
                         mcalendar2.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -461,7 +461,7 @@ public class homeActivity extends AppCompatActivity {
 
                 String date = DateFormat.getDateInstance().format(new Date());
 
-                MModel model = new MModel(task, description, key, date, date1, date2);
+                Model model = new Model(task, description, key, date, date1, date2);
 
 
                 reference.child(key).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -469,10 +469,10 @@ public class homeActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
 
                         if (task.isSuccessful()) {
-                            Toast.makeText(homeActivity.this, "업데이트 성공", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "업데이트 성공", Toast.LENGTH_SHORT).show();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(homeActivity.this, "업데이트에 실패했습니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "업데이트에 실패했습니다", Toast.LENGTH_SHORT).show();
 
                         }
                     }
@@ -492,10 +492,10 @@ public class homeActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(homeActivity.this, "루틴 삭제 성공", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "루틴 삭제 성공", Toast.LENGTH_SHORT).show();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(homeActivity.this, "루틴 삭제 실패", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "루틴 삭제 실패", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -536,7 +536,7 @@ public class homeActivity extends AppCompatActivity {
 
             case R.id.logout :
                 mAuth.signOut();
-                Intent intent = new Intent(homeActivity.this, loginActivity.class);
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class loginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText loginEmail, loginPwd;
     private Button loginBtn;
@@ -64,7 +64,7 @@ public class loginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 // 회원가입하실래요? 버튼 누르면 회원가입창으로 넘어감~
-                Intent intent = new Intent(loginActivity.this, registrationActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,13 +93,13 @@ public class loginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    Intent intent = new Intent(loginActivity.this, homeActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                     startActivity(intent);
                                     finish();
 
                                 }else{
                                     String error = task.getException().toString();
-                                    Toast.makeText(loginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
 
                                 }
                                 loader.dismiss();
