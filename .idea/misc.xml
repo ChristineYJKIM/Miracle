@@ -14,9 +14,28 @@
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable/todocheckbox_custom.xml" value="0.1" />
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/font/font.xml" value="0.1" />
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_calendar.xml" value="0.264" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_daily.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_daily.xml" value="0.2" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_home.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_login.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_login_nr.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_main.xml" value="0.18020833333333333" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/sh_activity_main.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_main_nr.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_message.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_real_calendar.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_registration.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_signup.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/calendar_cell.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/dialog.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/fragment_chat.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/fragment_community.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/input_file.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/item_chat.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/item_community.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/item_message.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/retrieved_layoute.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/sh_activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/todo_retrive.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/update_date.xml" value="0.2" />
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/menu/bottom_navigation_main.xml" value="0.1" />
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/menu/main_menu.xml" value="0.1" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/drawable/splash.xml" value="0.118" />

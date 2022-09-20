@@ -11,9 +11,8 @@
         android:layout_height="204dp"
         android:layout_margin="10dp"
         android:background="#03A9F4"
-        android:gravity="center"
         android:padding="10dp"
-        android:text="루틴 추가"
+        android:text="습관 만들기"
         android:textColor="#FFFFFF"
         android:textSize="28sp"
         android:textStyle="bold" />

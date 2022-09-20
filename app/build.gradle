@@ -46,7 +46,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-//firebase 새로 추가했심!
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //firebase 새로 추가했심!
     implementation platform('com.google.firebase:firebase-bom:30.3.2')
     implementation 'com.google.firebase:firebase-analytics'
 

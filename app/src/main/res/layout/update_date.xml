@@ -8,13 +8,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Update your task"
-        android:gravity="center"
-        android:background="#03A9F4"
+        android:layout_marginLeft="10dp"
+        android:text="습관을 변경하세요"
         android:padding="10dp"
-        android:textSize="10dp"
-        android:textStyle="bold"/>
+        android:textSize="30sp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/mainblue"
+        android:fontFamily="@font/gmarketsans_medium"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,9 +35,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Task"
-                android:textColor="#000"
-                android:textStyle="bold" />
+                android:text="습관명"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="20sp"/>
 
         </RelativeLayout>
 
@@ -53,9 +55,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Task"
-                android:textColorHint="#969696"
-                android:textStyle="bold" />
+                android:fontFamily="@font/gmarketsans_medium"
+                android:text="습관명을 입력하세요"
+                android:textColorHint="@color/gray"
+                android:textSize="18sp" />
 
         </RelativeLayout>
 
@@ -76,9 +79,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="description"
-                android:textStyle="bold"
-                android:textColor="#000"
+                android:text="설명"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="20sp"
                 android:layout_margin="10dp"/>
 
         </RelativeLayout>
@@ -96,9 +100,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="설명을 작성해주시와요"
-                android:textColorHint="#969696"
-                android:textStyle="bold" />
+                android:text="습관에 대해서 적어주세요"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="18sp"/>
 
         </RelativeLayout>
 
@@ -123,9 +128,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="실행기간"
-                android:textColor="#000"
-                android:textStyle="bold" />
+                android:text="실행 기간"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="20sp"/>
 
         </RelativeLayout>
 
@@ -144,9 +150,9 @@
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
                 android:hint="시작날짜"
-                android:textColor="#000"
-                android:textColorHint="#969696"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -164,9 +170,9 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:hint="종료날짜"
-                android:textColor="#000"
-                android:textColorHint="#969696"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="20sp"/>
 
         </RelativeLayout>
 
@@ -200,11 +206,11 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="#03A9F4"
+                android:background="@color/mainblue"
                 android:text="삭제"
                 android:textAllCaps="false"
-                android:textSize="17dp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
@@ -225,8 +231,8 @@
                 android:background="#03A9F4"
                 android:text="업데이트"
                 android:textAllCaps="false"
-                android:textSize="17dp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="16sp" />
 
         </RelativeLayout>
     </LinearLayout>
