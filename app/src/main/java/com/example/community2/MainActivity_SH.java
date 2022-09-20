@@ -18,7 +18,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SH_MainActivity extends AppCompatActivity {
+public class MainActivity_SH extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

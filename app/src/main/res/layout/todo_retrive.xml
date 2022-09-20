@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <CheckBox
+            android:id="@+id/todoCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/black"
+            android:paddingStart="8dp"
+            tool:text="여기에 뭔가 입력되어있겠지?" />
+
+        //체크박스에 파이어베이스 task 데이터를 띄운다
+        //그리고 그걸 수행해서 클릭하면 색깔이 바뀐다.
+        //삭제, 수정 기능을 넣어준다. - 파이어베이스 연동되어야함
+
+    </RelativeLayout>
+
+</LinearLayout>

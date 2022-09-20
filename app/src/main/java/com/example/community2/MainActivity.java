@@ -30,10 +30,6 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         setMonthView();
 
         LocalDate now = LocalDate.now();
-        TextView textView = findViewById(R.id.calendarbottomdate);
-        int monthValue = now.getMonthValue();
-        int dayOfMonth = now.getDayOfMonth();
-        textView.setText(monthValue + " . " + dayOfMonth);
     }
 
     private void initWidgets() {
