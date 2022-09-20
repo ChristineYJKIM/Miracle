@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:textColor="@color/gray"
+            android:background="@null"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:onClick="previousMonthAction"
+            android:fontFamily="@font/lato_black" />
+
+        <TextView
+            android:id="@+id/monthYearTV"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Aug 2022"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/lato_black"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/forward"
+            android:textColor="@color/gray"
+            android:background="@null"
+            android:textStyle="bold"
+            android:onClick="nextMonthAction"
+            android:textSize="20sp"
+            android:fontFamily="@font/lato_black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="일"
+            android:textColor="@color/mainblue"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/gmarketsans_medium"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="월"
+            android:textAlignment="center"
+            android:textColor="@color/mainblue"
+            android:textSize="16sp"
+            android:fontFamily="@font/gmarketsans_medium"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="화"
+            android:textColor="@color/mainblue"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/gmarketsans_medium"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="수"
+            android:textColor="@color/mainblue"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/gmarketsans_medium"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="목"
+            android:textColor="@color/mainblue"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/gmarketsans_medium"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="금"
+            android:textColor="@color/mainblue"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/gmarketsans_medium"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="토"
+            android:textColor="@color/mainblue"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/gmarketsans_medium"/>
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendarRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="270dp" />
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:orientation="vertical"
+        android:background="@drawable/round_rect">
+
+        <TextView
+            android:id="@+id/calendarbottomdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp"
+            android:fontFamily="@font/lato_medium"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/habitcheckbox_custom"
+                android:button="@null"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="습관 내용"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/habitcheckbox_custom"
+                android:button="@null"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="습관 내용"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/habitcheckbox_custom"
+                android:button="@null"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="습관 내용"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/habitcheckbox_custom"
+                android:button="@null"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="습관 내용"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/habitcheckbox_custom"
+                android:button="@null"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="습관 내용"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/todocheckbox_custom"
+                android:button="@null"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="습관 내용"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/todocheckbox_custom"
+                android:button="@null"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="습관 내용"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <CheckBox
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/todocheckbox_custom"
+                android:button="@null"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="습관 내용"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

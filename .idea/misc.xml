@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable-hdpi/diarypage_round_rect.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable-hdpi/habitcheckbox_custom.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable/border_layout.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable/diarypage_round_rect.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable/habitcheckbox_custom.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable/ic_baseline_calendar_view_day_24.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable/round_rect.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/drawable/todocheckbox_custom.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/font/font.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_daily.xml" value="0.1" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/activity_main.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/sh_activity_main.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/menu/bottom_navigation_main.xml" value="0.1" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/drawable/splash.xml" value="0.118" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/layout/activity_login.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/layout/activity_main.xml" value="0.23125" />
@@ -18,7 +31,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
