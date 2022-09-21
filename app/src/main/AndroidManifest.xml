@@ -35,9 +35,6 @@
             android:exported="true"
             android:theme="@style/SplashTheme"/>
         <activity
-            android:name="com.example.community2.CalendarActivity"
-            android:exported="false" />
-        <activity
             android:name="com.example.community2.RegistrationActivity"
             android:exported="true" />
         <activity

@@ -42,12 +42,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Task"
+                android:text="습관"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:padding="5dp"
                 android:maxLines="1"
-                android:textColor="#000"/>
+                android:textColor="#000"
+                android:fontFamily="@font/gmarketsans_medium"/>
 
             <TextView
                 android:id="@+id/descriptionTv"
@@ -55,8 +56,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:textColor="#000"
-                android:text="Description"
-                android:textSize="15sp" />
+                android:text="설명"
+                android:textSize="15sp"
+                android:fontFamily="@font/gmarketsans_medium"/>
 
 
 

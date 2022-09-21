@@ -12,10 +12,13 @@
         <TextView
             android:id="@+id/chatitem_textview_title"
             android:text="방 이름"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gmarketsans_medium"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/chatitem_textview_lastMessage"

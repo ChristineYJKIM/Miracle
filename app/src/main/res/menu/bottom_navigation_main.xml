@@ -10,6 +10,10 @@
         android:title="Chat"/>
 
     <item
+        android:id="@+id/calendar"
+        android:title="calendar"/>
+
+    <item
         android:id="@+id/action_mypage"
         android:title="My Page"/>
 

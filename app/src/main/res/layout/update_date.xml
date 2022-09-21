@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:text="습관을 변경하세요"
+        android:text="습관 변경하기"
         android:padding="10dp"
         android:textSize="30sp"
         android:layout_marginTop="60dp"
@@ -128,10 +128,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="실행 기간"
-                android:textColor="@color/black"
                 android:fontFamily="@font/gmarketsans_medium"
-                android:textSize="20sp"/>
+                android:text="실행\n기간"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -149,10 +149,10 @@
                 android:layout_marginBottom="10dp"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                android:hint="시작날짜"
+                android:hint="시작 날짜"
                 android:textColor="@color/black"
                 android:fontFamily="@font/gmarketsans_medium"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
@@ -169,10 +169,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:hint="종료날짜"
+                android:hint="종료 날짜"
                 android:textColor="@color/black"
                 android:fontFamily="@font/gmarketsans_medium"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
 
         </RelativeLayout>
 
@@ -210,7 +210,8 @@
                 android:text="삭제"
                 android:textAllCaps="false"
                 android:fontFamily="@font/gmarketsans_medium"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
 
         </RelativeLayout>
 
@@ -228,11 +229,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="#03A9F4"
+                android:background="@color/mainblue"
                 android:text="업데이트"
                 android:textAllCaps="false"
                 android:fontFamily="@font/gmarketsans_medium"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
 
         </RelativeLayout>
     </LinearLayout>

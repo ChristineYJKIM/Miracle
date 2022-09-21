@@ -44,7 +44,7 @@ public class RegistrationActivity extends AppCompatActivity {
         RegPwd = findViewById(R.id.RegisterPassword);
         RegPwd2 = findViewById(R.id.RegisterPassword2);
         RegBtn = findViewById(R.id.RegisterButton);
-        RegQn = findViewById(R.id.RegisterQuestion);
+/*        RegQn = findViewById(R.id.RegisterQuestion);*/
 
 
         //돌아가기 버튼 누르면, 다시 로그인창으로 이동한다~

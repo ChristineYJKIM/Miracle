@@ -23,7 +23,7 @@ public class MainActivity_SH extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sh_activity_main);
+        setContentView(R.layout.nav_bar);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.mainActivity_bottomnavigationview);
 

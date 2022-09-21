@@ -8,14 +8,14 @@
 
     <TextView
         android:layout_width="397dp"
-        android:layout_height="204dp"
+        android:layout_height="100dp"
         android:layout_margin="10dp"
-        android:background="#03A9F4"
+        android:background="@color/mainblue"
         android:padding="10dp"
-        android:text="습관 만들기"
+        android:text="습관 추가하기"
+        android:fontFamily="@font/gmarketsans_medium"
         android:textColor="#FFFFFF"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+        android:textSize="30sp" />
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,9 +35,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Task"
+                android:text="습관"
                 android:textColor="#000"
-                android:textStyle="bold" />
+                android:textSize="20sp"
+                android:fontFamily="@font/gmarketsans_medium"/>
 
         </RelativeLayout>
 
@@ -54,10 +55,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:hint="루틴 적어주시와요"
+                android:hint="습관명을 적어주세요"
                 android:textColor="#000"
                 android:textColorHint="#969696"
-                android:textStyle="bold" />
+                android:fontFamily="@font/gmarketsans_medium"/>
         </RelativeLayout>
 
 
@@ -80,7 +81,8 @@
                 android:layout_height="wrap_content"
                 android:text="설명"
                 android:textColor="#000"
-                android:textStyle="bold"
+                android:textSize="20sp"
+                android:fontFamily="@font/gmarketsans_medium"
                 android:layout_margin="10dp"/>
 
         </RelativeLayout>
@@ -101,7 +103,7 @@
                 android:hint="Routine description"
                 android:textColor="#000"
                 android:textColorHint="#969696"
-                android:textStyle="bold" />
+                android:fontFamily="@font/gmarketsans_medium"/>
         </RelativeLayout>
 
 
@@ -128,7 +130,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="기간설정"
                 android:textColor="#000"
-                android:textStyle="bold" />
+                android:fontFamily="@font/gmarketsans_medium" />
 
         </RelativeLayout>
 
@@ -146,10 +148,11 @@
                 android:layout_marginBottom="10dp"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                android:hint="시작날짜"
+                android:hint="시작 날짜"
                 android:textColor="#000"
                 android:textColorHint="#969696"
-                android:textStyle="bold" />
+                android:textSize="15sp"
+                android:fontFamily="@font/gmarketsans_medium" />
 
         </RelativeLayout>
 
@@ -166,10 +169,11 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:hint="종료날짜"
+                android:hint="종료 날짜"
                 android:textColor="#000"
                 android:textColorHint="#969696"
-                android:textStyle="bold" />
+                android:textSize="15sp"
+                android:fontFamily="@font/gmarketsans_medium"/>
 
         </RelativeLayout>
 
@@ -204,7 +208,10 @@
                 android:layout_marginBottom="10dp"
                 android:text="저장"
                 android:textAllCaps="false"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:background="@color/mainblue"
+                android:textSize="20sp"
+                android:fontFamily="@font/gmarketsans_medium"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -222,7 +229,10 @@
                 android:layout_marginBottom="10dp"
                 android:text="취소"
                 android:textAllCaps="false"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:background="@color/mainblue"
+                android:textSize="20sp"
+                android:fontFamily="@font/gmarketsans_medium"/>
         </RelativeLayout>
 
 

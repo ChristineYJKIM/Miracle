@@ -18,27 +18,29 @@
 
             <EditText
                 android:id="@+id/communityFragment_edittext"
-                android:hint="Search"
+                android:hint="검색"
                 android:layout_marginTop="10dp"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gmarketsans_medium"/>
 
             <ImageButton
-                android:src="@drawable/search_button"
+                android:src="@drawable/ic_baseline_search_24"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"/>
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/communityFragment_textview"
-            android:text="community."
-            android:textColor="#4B65CF"
-            android:textSize="50dp"
-            android:textStyle="bold"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Community"
+            android:gravity="center"
+            android:textColor="@color/darkmainblue"
+            android:textSize="50sp"
+            android:fontFamily="@font/lato_black" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -52,8 +54,8 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/communityFragment_floatingbutton"
-        android:src="@drawable/create_community_button"
-        android:backgroundTint="#4B65CF"
+        android:src="@drawable/community_add_button"
+        android:backgroundTint="@color/darkmainblue"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"
