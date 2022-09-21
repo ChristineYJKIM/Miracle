@@ -9,8 +9,6 @@
     tools:context=".LoginActivity"
     >
 
-
-
     <Toolbar
         android:id="@+id/loginToolbar"
         android:layout_width="match_parent"
@@ -66,11 +64,5 @@
         android:textColor="#696969"
         android:layout_marginTop="170dp"
         android:layout_marginLeft="280dp"/>
-
-
-
-
-
-
 
 </LinearLayout>

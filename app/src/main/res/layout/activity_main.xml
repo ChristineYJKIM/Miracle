@@ -148,6 +148,7 @@
             android:paddingTop="30dp"
             android:paddingBottom="15dp"
             android:paddingLeft="20dp"
+            android:gravity="center"
             android:fontFamily="@font/lato_medium"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -367,6 +368,10 @@
 
     </LinearLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/bottom_navigation_main"/>
 
 
 </LinearLayout>

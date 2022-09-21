@@ -2,19 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/calendar"
+        android:title="calendar"
+        android:icon="@drawable/ic_baseline_calendar_month_24"/>
+
+    <item
         android:id="@+id/action_community"
-        android:title="Community"/>
+        android:title="Community"
+        android:icon="@drawable/ic_baseline_people_outline_24"/>
 
     <item
         android:id="@+id/action_chat"
-        android:title="Chat"/>
+        android:title="Chat"
+        android:icon="@drawable/ic_baseline_chat_24"/>
 
-    <item
-        android:id="@+id/calendar"
-        android:title="calendar"/>
 
     <item
         android:id="@+id/action_mypage"
-        android:title="My Page"/>
+        android:title="My Page"
+        android:icon="@drawable/ic_baseline_emoji_emotions_24"/>
 
 </menu>

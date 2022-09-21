@@ -20,7 +20,8 @@
         android:backgroundTint="@color/mainblue"
         android:contentDescription="go_to_calendar"
         android:src="@drawable/ic_stat_name"
-        app:tint="@null"/>
+        app:tint="@null"
+        android:onClick="showCalendar"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,8 +43,8 @@
         android:textColor="@color/black"/>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -57,18 +58,17 @@
             />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginLeft="16dp"
-        android:src="@drawable/ic_baseline_add_24"
-        android:contentDescription="TODO" />
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/mainblue"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_baseline_add_24" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
 
 
 </LinearLayout>

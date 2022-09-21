@@ -328,6 +328,9 @@ public class HomeActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
+    public void showCalendar(View view) {
+    }
+
 
     //리사이클러뷰가 나오게끔 클래스와 객체 생성하고 세팅함...
     public static class MyViewHolder extends RecyclerView.ViewHolder {
