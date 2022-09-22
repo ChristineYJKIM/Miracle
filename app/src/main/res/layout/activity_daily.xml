@@ -64,6 +64,7 @@
                 android:textColor="@color/white" />
 
             <EditText
+                android:id="@+id/dailyActivity_todo_edittext1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="습관 내용"
@@ -89,6 +90,7 @@
                 android:textColor="@color/white" />
 
             <EditText
+                android:id="@+id/dailyActivity_todo_edittext2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="습관 내용"
@@ -114,6 +116,7 @@
                 android:textColor="@color/white" />
 
             <EditText
+                android:id="@+id/dailyActivity_todo_edittext3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="습관 내용"
@@ -145,6 +148,7 @@
             android:textColor="@color/darkmainblue"/>
 
         <EditText
+            android:id="@+id/dailyActivity_diary_edittext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="오늘 하루를 기록하세요"

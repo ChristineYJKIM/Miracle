@@ -3,6 +3,7 @@ package com.example.community2;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,10 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.community2.model.dayModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class CalendarFragment extends Fragment implements CalendarAdapter.OnItemListener {
@@ -101,9 +109,30 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
     @Override
     public void onItemClick(int position, String dayText) {
         if (!dayText.equals("")) {
+            List<dayModel> days = new ArrayList<>();
+            FirebaseDatabase.getInstance().getReference().child("daily").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    days.clear();
+                    for(DataSnapshot item : snapshot.getChildren()) {
+                        dayModel dayModel = item.getValue(com.example.community2.model.dayModel.class);
+                        days.add(dayModel);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
             Intent intent = new Intent(getActivity(), DailyActivity.class);
             intent.putExtra("day", dayText);
             intent.putExtra("clickMonth", monthYearFromDate(selectedDate) );
+            intent.putExtra("todo1", days.get(position).todo1);
+            intent.putExtra("todo2", days.get(position).todo2);
+            intent.putExtra("todo3", days.get(position).todo3);
+            intent.putExtra("diary", days.get(position).diary);
             startActivity(intent);
         }
     }
