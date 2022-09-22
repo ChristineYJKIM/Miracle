@@ -28,7 +28,7 @@
             android:name=".chat.MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_SH"
+            android:name=".NavigationBarMainActivity"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
@@ -38,16 +38,10 @@
             android:exported="true"
             android:theme="@style/SplashTheme" />
         <activity
-            android:name=".RegistrationActivity"
-            android:exported="true" />
-        <activity
             android:name=".HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity_NR"
-            android:exported="true" />
-        <activity
-            android:name=".NR_MainActivity"
+            android:name=".IntroSplash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

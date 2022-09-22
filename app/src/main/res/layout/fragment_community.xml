@@ -59,21 +59,11 @@
         android:backgroundTint="@color/darkmainblue"
 
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         app:fabSize="normal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/bottom_nav"/>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-
-        android:background="@color/darkmainblue"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/bottom_navigation_main" />
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

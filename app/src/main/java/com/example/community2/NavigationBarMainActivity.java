@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.example.community2.fragment.ChatFragment;
 import com.example.community2.fragment.CommunityFragment;
+import com.example.community2.fragment.MyPageFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,15 +19,16 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity_SH extends AppCompatActivity {
+public class NavigationBarMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_bar);
+        setContentView(R.layout.navigation_bar);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.mainActivity_bottomnavigationview);
 
+        getSupportFragmentManager().beginTransaction().add(R.id.mainActivity_framelayout,new CalendarFragment()).commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -36,6 +38,12 @@ public class MainActivity_SH extends AppCompatActivity {
                         return true;
                     case R.id.nav_chat:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainActivity_framelayout, new ChatFragment()).commit();
+                        return true;
+                    case R.id.nav_calendar:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.mainActivity_framelayout, new CalendarFragment()).commit();
+                        return true;
+                    case R.id.nav_myPage:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.mainActivity_framelayout, new MyPageFragment()).commit();
                         return true;
                 }
                 return false;
