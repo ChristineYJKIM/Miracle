@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -17,8 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    private ImageButton login;
-    private ImageButton signup;
+    private Button login;
+    private Button signup;
     private EditText id;
     private EditText password;
     private FirebaseAuth firebaseAuth;
@@ -30,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login = (ImageButton) findViewById(R.id.loginActivity_button_login);
-        signup = (ImageButton) findViewById(R.id.loginActivity_button_signup);
+        login = (Button) findViewById(R.id.loginActivity_button_login);
+        signup = (Button) findViewById(R.id.loginActivity_button_signup);
         id = (EditText) findViewById(R.id.loginActivity_edittext_id);
         password = (EditText) findViewById(R.id.loginActivity_edittext_password);
         firebaseAuth = FirebaseAuth.getInstance();

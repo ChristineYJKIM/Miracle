@@ -8,8 +8,10 @@
         android:text="커뮤니티 이름"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
         android:fontFamily="@font/gmarketsans_medium"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textColor="@color/black"/>
 
     <EditText
@@ -17,6 +19,8 @@
         android:hint="Community Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:fontFamily="@font/gmarketsans_medium"
         android:textSize="20sp"
         android:textColor="@color/black"/>
@@ -26,8 +30,9 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:fontFamily="@font/gmarketsans_medium"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textColor="@color/black"/>
 
     <EditText
@@ -35,6 +40,8 @@
         android:hint="Please explain your community"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:fontFamily="@font/gmarketsans_medium"
         android:textSize="20sp"
         android:textColor="@color/black"/>

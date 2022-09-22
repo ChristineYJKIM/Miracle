@@ -6,69 +6,101 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/intro_2">
 
     <TextView
+        android:id="@+id/loginTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="550dp"
-        android:layout_marginRight="165dp"
+        android:layout_marginLeft="30dp"
+        android:fontFamily="@font/gmarketsans_medium"
         android:text="내가\n만들어내는\n미라클 시작하기"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="30dp" />
+        android:textColor="@color/black"
+        android:textSize="35sp" />
 
     <TextView
         android:id="@+id/loginActivity_textview_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_below="@id/loginTitle"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="30dp"
-        android:text="아이디(id)"
+        android:text="아이디 (ID)"
+        android:fontFamily="@font/gmarketsans_medium"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/loginActivity_edittext_id"
-        android:hint="e-mail"
-        android:layout_alignStart="@+id/loginActivity_textview_id"
-        android:layout_alignTop="@+id/loginActivity_textview_id"
-        android:layout_marginTop="30dp"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginActivity_textview_id"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="이메일 입력"
+        android:fontFamily="@font/gmarketsans_medium"/>
 
     <TextView
         android:id="@+id/loginActivity_textview_password"
+        android:layout_below="@id/loginActivity_edittext_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
         android:text="비밀번호(PW)"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="20sp"
+        android:fontFamily="@font/gmarketsans_medium"/>
 
     <EditText
         android:id="@+id/loginActivity_edittext_password"
-        android:hint="password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginActivity_textview_password"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="비밀번호 입력"
         android:inputType="textPassword"
-        android:layout_alignStart="@+id/loginActivity_textview_password"
-        android:layout_alignTop="@+id/loginActivity_textview_password"
-        android:layout_marginTop="30dp"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"/>
+        android:fontFamily="@font/gmarketsans_medium"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/loginActivity_button_login"
-        android:src="@drawable/login_button"
-        android:layout_marginTop="450dp"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/loginActivity_edittext_password"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/mainblue"
+        android:textColor="@color/white"
+        android:fontFamily="@font/gmarketsans_medium"
+        android:text="로그인"
+        android:textSize="20sp" />
 
-    <ImageButton
-        android:id="@+id/loginActivity_button_signup"
-        android:src="@drawable/signup_button"
-        android:layout_marginTop="500dp"
-        android:layout_marginLeft="300dp"
+    <TextView
+        android:id="@+id/signupText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginActivity_button_login"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/gmarketsans_medium"
+        android:text="아직 회원이 아니세요?"
+        android:textColor="@color/darkmainblue"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/loginActivity_button_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginActivity_button_login"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/signupText"
+        android:background="@null"
+        android:fontFamily="@font/gmarketsans_medium"
+        android:text="회원가입 >"
+        android:textSize="18sp" />
 
 </RelativeLayout>

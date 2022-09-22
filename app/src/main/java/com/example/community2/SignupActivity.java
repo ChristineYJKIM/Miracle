@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -21,7 +22,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private EditText name;
-    private ImageButton signup;
+    private Button signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class SignupActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.signupActivity_edittext_id);
         password = (EditText) findViewById(R.id.signupActivity_edittext_password);
         name = (EditText) findViewById(R.id.signupActivity_edittext_name);
-        signup = (ImageButton) findViewById(R.id.signupActivity_button_signup);
+        signup = (Button) findViewById(R.id.signupActivity_button_signup);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

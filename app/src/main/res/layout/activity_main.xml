@@ -136,8 +136,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:layout_below="@id/whatDay"/>
+        android:layout_height="250dp"
+        android:layout_below="@id/whatDay" />
 
     <!--오늘의 습관 나타나는 공간-->
     <LinearLayout

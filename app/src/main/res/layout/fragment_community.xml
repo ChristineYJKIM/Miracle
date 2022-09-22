@@ -8,8 +8,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_nav">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -27,9 +26,9 @@
 
             <ImageButton
                 android:src="@drawable/ic_baseline_search_24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"/>
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@null"/>
 
         </LinearLayout>
 
@@ -39,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="커뮤니티"
-            android:textColor="@color/darkmainblue"
+            android:textColor="@color/mainblue"
             android:textSize="45sp"
             android:fontFamily="@font/gmarketsans_medium" />
 
@@ -55,8 +54,8 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/communityFragment_floatingbutton"
-        android:src="@drawable/community_add_button"
-        android:backgroundTint="@color/darkmainblue"
+        android:src="@drawable/communitymbbutton"
+        android:backgroundTint="@color/mainblue"
 
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
