@@ -43,7 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
         RegEmail = findViewById(R.id.RegisterEmail);
         RegPwd = findViewById(R.id.RegisterPassword);
         RegPwd2 = findViewById(R.id.RegisterPassword2);
-        RegBtn = findViewById(R.id.RegisterButton);
+/*        RegBtn = findViewById(R.id.RegisterButton);*/
 /*        RegQn = findViewById(R.id.RegisterQuestion);*/
 
 

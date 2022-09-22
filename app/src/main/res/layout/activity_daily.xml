@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainblue"
+    android:background="@color/lightblue"
     android:orientation="vertical"
     tools:context=".DailyActivity">
 
@@ -38,7 +38,7 @@
             android:fontFamily="@font/lato_black"
             android:text="to do list"
             android:textSize="18sp"
-            android:textColor="@color/mainblue"/>
+            android:textColor="@color/darkmainblue"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -142,7 +142,7 @@
             android:fontFamily="@font/gmarketsans_medium"
             android:text="하루 끝 기록"
             android:textSize="18sp"
-            android:textColor="@color/mainblue"/>
+            android:textColor="@color/darkmainblue"/>
 
         <EditText
             android:layout_width="wrap_content"

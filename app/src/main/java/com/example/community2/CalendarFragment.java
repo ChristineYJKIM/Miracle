@@ -32,7 +32,7 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         return inflater.inflate(R.layout.fragment_calendar, container, false);
     }
     @Override
-    protected void onStart(Bundle savedInstanceState) {
+    public void onStart(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 /*        setContentView(R.layout.activity_main);*/
         initWidgets();

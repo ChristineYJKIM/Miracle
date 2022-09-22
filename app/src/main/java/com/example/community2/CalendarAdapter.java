@@ -1,4 +1,5 @@
 package com.example.community2;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,8 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 
     public interface  OnItemListener
     {
+        void onStart(Bundle savedInstanceState);
+
         void onItemClick(int position, String dayText);
     }
 }
