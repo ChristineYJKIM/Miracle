@@ -4,17 +4,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_rect_calendar">
 
     <TextView
         android:layout_width="397dp"
         android:layout_height="100dp"
         android:layout_margin="10dp"
-        android:background="@color/mainblue"
-        android:padding="10dp"
+        android:gravity="center"
+        android:padding="5dp"
         android:text="습관 추가하기"
         android:fontFamily="@font/gmarketsans_medium"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/mainblue"
         android:textSize="30sp" />
     
     <LinearLayout

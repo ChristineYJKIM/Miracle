@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@drawable/intro_2"
     tools:context="com.example.community2.HomeActivity">
 
 
@@ -30,7 +30,7 @@
         android:text="만들고 싶은 습관을\n입력해주세요"
         android:textSize="30sp"
         android:fontFamily="@font/gmarketsans_medium"
-        android:textColor="@color/mainblue"
+        android:textColor="@color/black"
         />
 
     <TextView

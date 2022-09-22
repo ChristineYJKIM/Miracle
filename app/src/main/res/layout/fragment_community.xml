@@ -8,7 +8,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -36,11 +37,11 @@
             android:id="@+id/communityFragment_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Community"
-            android:gravity="center"
+            android:layout_margin="20dp"
+            android:text="커뮤니티"
             android:textColor="@color/darkmainblue"
-            android:textSize="50sp"
-            android:fontFamily="@font/lato_black" />
+            android:textSize="45sp"
+            android:fontFamily="@font/gmarketsans_medium" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -56,11 +57,23 @@
         android:id="@+id/communityFragment_floatingbutton"
         android:src="@drawable/community_add_button"
         android:backgroundTint="@color/darkmainblue"
-        android:layout_alignParentBottom="true"
+
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"
         app:fabSize="normal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_nav"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+
+        android:background="@color/darkmainblue"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_navigation_main" />
+
 
 </RelativeLayout>

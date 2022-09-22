@@ -31,10 +31,10 @@ public class MainActivity_SH extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_community:
+                    case R.id.nav_community:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainActivity_framelayout, new CommunityFragment()).commit();
                         return true;
-                    case R.id.action_chat:
+                    case R.id.nav_chat:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainActivity_framelayout, new ChatFragment()).commit();
                         return true;
                 }
