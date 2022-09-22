@@ -17,6 +17,7 @@
         android:layout_marginTop="20dp">
 
         <Button
+            android:id="@+id/previousMonthBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -25,7 +26,6 @@
             android:background="@null"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:onClick="previousMonthAction"
             android:fontFamily="@font/lato_black" />
 
         <TextView
@@ -40,6 +40,7 @@
             android:fontFamily="@font/lato_black"/>
 
         <Button
+            android:id="@+id/nextMonthBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -47,7 +48,6 @@
             android:textColor="@color/gray"
             android:background="@null"
             android:textStyle="bold"
-            android:onClick="nextMonthAction"
             android:textSize="20sp"
             android:fontFamily="@font/lato_black"/>
 
