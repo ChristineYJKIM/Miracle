@@ -1,5 +1,6 @@
 package com.example.community2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,10 +12,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.community2.model.DayModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener {
     private TextView monthYearText;
@@ -95,7 +103,7 @@ public abstract class MainActivity extends AppCompatActivity implements Calendar
         if (!dayText.equals("")) {
             Intent intent = new Intent(this, DailyActivity.class);
             intent.putExtra("day", dayText);
-            intent.putExtra("clickMonth", monthYearFromDate(selectedDate) );
+            intent.putExtra("clickMonth", monthYearFromDate(selectedDate));
             startActivity(intent);
         }
     }

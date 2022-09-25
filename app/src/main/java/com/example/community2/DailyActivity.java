@@ -10,9 +10,18 @@ import android.widget.TextView;
 import com.example.community2.model.DayModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DailyActivity extends AppCompatActivity {
     public EditText todo1, todo2, todo3, diary;
@@ -34,16 +43,23 @@ public class DailyActivity extends AppCompatActivity {
 
         clickMonth= getIntent().getStringExtra("clickMonth");
         day = getIntent().getStringExtra("day");
-        String task1 = getIntent().getStringExtra("todo1");
-        String task2 = getIntent().getStringExtra("todo2");
-        String task3 = getIntent().getStringExtra("todo3");
-        String daily = getIntent().getStringExtra("diary");
 
+        FirebaseDatabase.getInstance().getReference().child("daily").child(day + " " + clickMonth).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                DayModel dayModel = snapshot.getValue(DayModel.class);
+                todo1.setText(dayModel.todo1);
+                todo2.setText(dayModel.todo2);
+                todo3.setText(dayModel.todo3);
+                diary.setText(dayModel.diary);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         textView.setText(day + " . " + clickMonth);
-        todo1.setText(task1);
-        todo2.setText(task2);
-        todo3.setText(task3);
-        diary.setText(daily);
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -112,35 +113,11 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
 
     @Override
     public void onItemClick(int position, String dayText) {
-        List<DayModel> dayModels = new ArrayList<>();
         if (!dayText.equals("")) {
-            FirebaseDatabase.getInstance().getReference().child("daily").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    dayModels.clear();
-                    for(DataSnapshot item : snapshot.getChildren()) {
-                        DayModel dayModel = item.getValue(DayModel.class);
-                        dayModels.add(dayModel);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
             Intent intent = new Intent(getActivity(), DailyActivity.class);
             intent.putExtra("day", dayText);
             intent.putExtra("clickMonth", monthYearFromDate(selectedDate) );
-            if(dayModels.size() > 0) {
-                intent.putExtra("todo1", dayModels.get(position).todo1);
-                intent.putExtra("todo2", dayModels.get(position).todo2);
-                intent.putExtra("todo3", dayModels.get(position).todo3);
-                intent.putExtra("diary", dayModels.get(position).diary);
-            }
             startActivity(intent);
         }
     }
-
 }
