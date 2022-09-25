@@ -12,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.community2.model.dayModel;
+import com.example.community2.model.DayModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,6 +36,7 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
     private String todayD;
     private Button previousMonthBtn, nextMonthBtn;
     private CalendarAdapter calendarAdapter;
+    private LinearLayout linearLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +48,7 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         monthYearText = v.findViewById(R.id.monthYearTV);
         previousMonthBtn = v.findViewById(R.id.previousMonthBtn);
         nextMonthBtn = v.findViewById(R.id.nextMonthBtn);
+        linearLayout = v.findViewById(R.id.calendarFragment_linearLayout);
 
         previousMonthBtn.setOnClickListener(view -> previousMonthAction());
         nextMonthBtn.setOnClickListener(view -> nextMonthAction());
@@ -60,7 +64,7 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         monthYearText.setText(monthYearFromDate(selectedDate));
         ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
 
-        calendarAdapter = new CalendarAdapter(daysInMonth, todayD, this);
+        calendarAdapter = new CalendarAdapter(linearLayout, daysInMonth, todayD, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 7);
 /*        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);*/
         calendarRecyclerView.setLayoutManager(layoutManager);
@@ -108,15 +112,15 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
 
     @Override
     public void onItemClick(int position, String dayText) {
+        List<DayModel> dayModels = new ArrayList<>();
         if (!dayText.equals("")) {
-            List<dayModel> days = new ArrayList<>();
-            FirebaseDatabase.getInstance().getReference().child("daily").addValueEventListener(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("daily").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    days.clear();
+                    dayModels.clear();
                     for(DataSnapshot item : snapshot.getChildren()) {
-                        dayModel dayModel = item.getValue(com.example.community2.model.dayModel.class);
-                        days.add(dayModel);
+                        DayModel dayModel = item.getValue(DayModel.class);
+                        dayModels.add(dayModel);
                     }
                 }
 
@@ -129,10 +133,12 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
             Intent intent = new Intent(getActivity(), DailyActivity.class);
             intent.putExtra("day", dayText);
             intent.putExtra("clickMonth", monthYearFromDate(selectedDate) );
-            intent.putExtra("todo1", days.get(position).todo1);
-            intent.putExtra("todo2", days.get(position).todo2);
-            intent.putExtra("todo3", days.get(position).todo3);
-            intent.putExtra("diary", days.get(position).diary);
+            if(dayModels.size() > 0) {
+                intent.putExtra("todo1", dayModels.get(position).todo1);
+                intent.putExtra("todo2", dayModels.get(position).todo2);
+                intent.putExtra("todo3", dayModels.get(position).todo3);
+                intent.putExtra("diary", dayModels.get(position).diary);
+            }
             startActivity(intent);
         }
     }

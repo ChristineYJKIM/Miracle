@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/calendarFragment_relativeLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -132,12 +133,19 @@
             android:fontFamily="@font/gmarketsans_medium"/>
     </LinearLayout>
 
-    <!--달력-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/calendarRecyclerView"
+    <LinearLayout
+        android:id="@+id/calendarFragment_linearLayout"
+        android:layout_marginTop="120dp"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:layout_below="@id/whatDay"/>
+        android:layout_height="wrap_content">
+        <!--달력-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendarRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_below="@id/whatDay"/>
+
+    </LinearLayout>
 
     <!--오늘의 습관 나타나는 공간-->
     <LinearLayout
@@ -145,7 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_nav"
-        android:layout_below="@id/calendarRecyclerView"
+        android:layout_below="@id/calendarFragment_linearLayout"
         android:layout_marginTop="7dp"
         android:background="@drawable/round_rect_calendar"
         android:orientation="vertical">

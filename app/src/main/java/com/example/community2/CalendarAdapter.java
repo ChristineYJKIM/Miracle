@@ -3,6 +3,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,12 +16,14 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     private final ArrayList<String> daysOfMonth;
     private final OnItemListener onItemListener;
     private final String today;
+    private ViewGroup mParent;
 
-    public CalendarAdapter(ArrayList<String> daysOfMonth, String today, OnItemListener onItemListener)
+    public CalendarAdapter(LinearLayout linearLayout, ArrayList<String> daysOfMonth, String today, OnItemListener onItemListener)
     {
         this.daysOfMonth = daysOfMonth;
         this.onItemListener = onItemListener;
         this.today = today;
+        this.mParent = linearLayout;
     }
 
     @NonNull
@@ -30,7 +34,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-//        layoutParams.height = (int) (parent.getHeight() * 0.166666666);
+        layoutParams.height = (int) (mParent.getHeight() * 0.166666666);
         return new CalendarViewHolder(view, onItemListener);
     }
 

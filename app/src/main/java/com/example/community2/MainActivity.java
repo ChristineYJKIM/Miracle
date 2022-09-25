@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public abstract class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
+    private LinearLayout linearLayout;
     private LocalDate selectedDate;
     private String todayD;
 
@@ -34,6 +36,7 @@ public abstract class MainActivity extends AppCompatActivity implements Calendar
 
     private void initWidgets() {
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
+        linearLayout = findViewById(R.id.calendarFragment_linearLayout);
         monthYearText = findViewById(R.id.monthYearTV);
     }
 
@@ -42,7 +45,7 @@ public abstract class MainActivity extends AppCompatActivity implements Calendar
         monthYearText.setText(monthYearFromDate(selectedDate));
         ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
 
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, todayD, this);
+        CalendarAdapter calendarAdapter = new CalendarAdapter(linearLayout, daysInMonth, todayD, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
