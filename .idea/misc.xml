@@ -66,24 +66,6 @@
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/layout/update_date.xml" value="0.2" />
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/menu/bottom_navigation_main.xml" value="0.1" />
         <entry key="..\:/Users/82106/AndroidStudioProjects/MiracleMain/app/src/main/res/menu/main_menu.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/drawable-mdpi/chat_bubble_left.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/drawable-v24/round_rect.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/drawable/chat_bubble.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/activity_daily.xml" value="0.176" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/activity_message.xml" value="0.16" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/activity_navigation_bar.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/activity_real_calendar.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/activity_signup.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/fragment_calendar.xml" value="0.16" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/item_chat.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/item_community.xml" value="0.10740740740740741" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/item_message.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/navigation_bar.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/retrieved_layoute.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/todo_retrive.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/layout/update_date.xml" value="0.1" />
-        <entry key="..\:/Users/82106/AndroidStudioProjects/RealFInalMiracle/app/src/main/res/menu/bottom_navigation_main.xml" value="0.1" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/drawable/splash.xml" value="0.118" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/layout/activity_login.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/layout/activity_main.xml" value="0.23125" />
@@ -98,6 +80,7 @@
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/menu/bottom_navigation_main.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_daily.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_message.xml" value="0.23125" />
+        <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_real_calendar.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/calendar_cell.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/fragment_calendar.xml" value="0.16" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/item_chat.xml" value="0.23125" />
@@ -105,7 +88,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
