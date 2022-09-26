@@ -3,6 +3,7 @@ package com.example.community2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +38,8 @@ public class SignupActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), NavigationBarMainActivity.class);
+                startActivity(intent);
                 if(email.getText().toString() == null || password.getText().toString() == null || name.getText().toString() == null) {
                     return;
                 }

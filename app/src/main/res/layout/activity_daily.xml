@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_heavy"
-            android:textColor="@color/white"
+            android:textColor="@color/darkmainblue"
             android:textSize="20sp" />
 
 
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
             android:fontFamily="@font/gmarketsans_medium"
-            android:textColor="@color/gray"
+            android:textColor="@color/darkgray"
             android:text="오늘 무조건 해야되는 3가지 작성해주세요."
             android:textSize="15sp"/>
 
@@ -134,7 +134,7 @@
 
     <LinearLayout
         android:layout_width="360dp"
-        android:layout_height="370dp"
+        android:layout_height="430dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="60dp"
@@ -147,18 +147,18 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gmarketsans_medium"
             android:text="하루 끝 기록"
-            android:textSize="18sp"
-            android:textColor="@color/darkmainblue"/>
+            android:textColor="@color/darkmainblue"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/dailyActivity_diary_edittext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="오늘 하루를 기록하세요"
+            android:background="@android:color/transparent"
             android:fontFamily="@font/gmarketsans_medium"
+            android:hint="오늘 하루를 기록하세요"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:background="@android:color/transparent" />
+            android:textSize="15sp" />
     </LinearLayout>
 
 

@@ -152,23 +152,20 @@
         android:id="@+id/layout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_nav"
         android:layout_below="@id/calendarFragment_linearLayout"
         android:layout_marginTop="7dp"
         android:background="@drawable/round_rect_calendar"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/calendarbottomdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_medium"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/lato_bold"
             android:gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="15dp"
+            android:text="today"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

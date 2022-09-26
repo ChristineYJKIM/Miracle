@@ -73,9 +73,9 @@
         android:layout_marginTop="60dp"
         android:layout_marginRight="30dp"
         android:background="@color/mainblue"
-        android:textColor="@color/white"
         android:fontFamily="@font/gmarketsans_medium"
         android:text="로그인"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
     <TextView

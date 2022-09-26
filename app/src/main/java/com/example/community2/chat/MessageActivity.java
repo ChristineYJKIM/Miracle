@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -285,22 +286,24 @@ public class MessageActivity extends AppCompatActivity {
                     messageViewHolder.imageView_selectPhoto.setVisibility(View.GONE);
                     messageViewHolder.textView_message.setVisibility(View.VISIBLE);
                     messageViewHolder.textView_message.setText(comments.get(position).message);
-                    messageViewHolder.textView_message.setBackgroundResource(R.drawable.rightbubble);
+                    messageViewHolder.textView_message.setBackgroundResource(R.drawable.chat_bubble);
+                    messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
                 } else {
                     messageViewHolder.textView_message.setVisibility(View.GONE);
                     messageViewHolder.imageView_selectPhoto.setVisibility(View.VISIBLE);
                     Glide.with(MessageActivity.this).load(comments.get(position).imageUrl).into(messageViewHolder.imageView_selectPhoto);
                 }
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_message.setTextSize(25);
-                messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
+                messageViewHolder.textView_message.setTextSize(20);
+                messageViewHolder.textView_message.setTextColor(Color.parseColor("#FFFFFF"));
+/*                messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);*/
                 setReadCounter(position, messageViewHolder.textView_readCounter_left);
             } else {
                 if(comments.get(position).imageUrl == null) {
                     messageViewHolder.imageView_selectPhoto.setVisibility(View.GONE);
                     messageViewHolder.textView_message.setVisibility(View.VISIBLE);
                     messageViewHolder.textView_message.setText(comments.get(position).message);
-                    messageViewHolder.textView_message.setBackgroundResource(R.drawable.leftbubble);
+                    messageViewHolder.textView_message.setBackgroundResource(R.drawable.chat_bubble_left);
                 } else {
                     messageViewHolder.textView_message.setVisibility(View.GONE);
                     messageViewHolder.imageView_selectPhoto.setVisibility(View.VISIBLE);
@@ -308,7 +311,7 @@ public class MessageActivity extends AppCompatActivity {
                 }
                 messageViewHolder.textView_name.setText(users.get(comments.get(position).uid).userName);
                 messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_message.setTextSize(25);
+                messageViewHolder.textView_message.setTextSize(20);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
                 setReadCounter(position, messageViewHolder.textView_readCounter_right);
             }
