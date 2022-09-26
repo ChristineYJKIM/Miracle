@@ -44,21 +44,19 @@ public class RealCalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real_calendar);
         TextView task = findViewById(R.id.routineTextView);
-        TextView routine = findViewById(R.id.txt_Name);
-        CheckBox routineBtn = findViewById(R.id.chk_selected);
 
 
 
-        recyclerView2 = findViewById(R.id.recyclerview2);
+        //recyclerView2 = findViewById(R.id.recyclerview2);
 
 
 
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setReverseLayout(true);
-        linearLayoutManager.setStackFromEnd(true);
-        recyclerView2.setHasFixedSize(true);
-        recyclerView2.setLayoutManager(linearLayoutManager);
+        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        //linearLayoutManager.setReverseLayout(true);
+        //linearLayoutManager.setStackFromEnd(true);
+        //recyclerView2.setHasFixedSize(true);
+        //recyclerView2.setLayoutManager(linearLayoutManager);
 
 
         //캘린더에 띄우기
@@ -93,68 +91,6 @@ public class RealCalendarActivity extends AppCompatActivity {
                     dayS = String.valueOf(day);
                 }
 
-                String date = new StringBuilder().append(year).append("/")
-                        .append(monthS).append("/")
-                        .append(dayS).toString();
-                LocalDate selected = LocalDate.parse(date, formatter);
-                Log.d("selected", selected.toString());
-                Log.d("year", String.valueOf(year));
-
-
-
-
-                final Model[] model = {new Model()};
-                String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                FirebaseDatabase.getInstance().getReference().child("tasks").child(Uid)
-                        .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-
-                               // Log.d("넌 뭐니", String.valueOf(datasnapshot.getValue()));
-
-                                String check = ""; //체크값 초기화
-
-                                for (DataSnapshot item : datasnapshot.getChildren()) {
-
-                                    Model model = item.getValue(Model.class);
-                                    Log.d("모델", item.getValue(Model.class).getDate1());
-                                    LocalDate localDate1 = LocalDate.parse(model.getDate1(), formatter);
-                                    LocalDate localDate2 = LocalDate.parse(model.getDate2(), formatter);
-
-                                    //LocalDate selectedDay = LocalDate.parse(LocalDate(selected, formatter);
-
-                                    if (selected.compareTo(localDate1) < 0 || selected.compareTo(localDate2) > 0) {
-                                    } else {
-                                        Log.d("선택날짜할일", item.toString());
-
-                                        //check.add(getTask);
-                                        check = check + item.getValue(Model.class).getTask();
-                                        Log.d("check", check.toString());
-
-                                        //체크박스뷰가 떠야한다 -> 리사이클러뷰 필요
-
-                                    }
-                                }
-
-
-                                //recyclerView.adapter.submitlist(check);
-                                //list adapter를 사용해서 구현해야할 것이다.
-
-                                 task.setText(check);
-
-                                //recyclerview 로 바꿀라면, check를 하려면 필요할 덧
-                                //리스트 -> 스트링타입?
-                                // 체크변수 타입을 List<String> 해야함 (122번줄을)
-
-
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                            }
-
-                        });
 
             }
         });
