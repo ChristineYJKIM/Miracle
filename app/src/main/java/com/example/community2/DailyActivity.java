@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,7 +28,9 @@ import java.util.List;
 
 public class DailyActivity extends AppCompatActivity {
     public EditText todo1, todo2, todo3, diary;
+    public CheckBox task1, task2, task3;
     public String clickMonth, day;
+    DayModel dayModel = new DayModel();
 
     private long presstime = 0;
     private final long finishtimeed = 1000;
@@ -40,6 +45,42 @@ public class DailyActivity extends AppCompatActivity {
         todo2 = findViewById(R.id.dailyActivity_todo_edittext2);
         todo3 = findViewById(R.id.dailyActivity_todo_edittext3);
         diary = findViewById(R.id.dailyActivity_diary_edittext);
+        task1 = findViewById(R.id.dailyActivity_checkbox_task1);
+        task2 = findViewById(R.id.dailyActivity_checkbox_task2);
+        task3 = findViewById(R.id.dailyActivity_checkbox_task3);
+
+        task1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(task1.isChecked()) {
+                    dayModel.task1 = 1;
+                } else {
+                    dayModel.task1 = 0;
+                }
+            }
+        });
+
+        task2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(task2.isChecked()) {
+                    dayModel.task2 = 1;
+                } else {
+                    dayModel.task2 = 0;
+                }
+            }
+        });
+
+        task3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(task3.isChecked()) {
+                    dayModel.task3 = 1;
+                } else {
+                    dayModel.task3 = 0;
+                }
+            }
+        });
 
         clickMonth= getIntent().getStringExtra("clickMonth");
         day = getIntent().getStringExtra("day");
@@ -48,10 +89,27 @@ public class DailyActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 DayModel dayModel = snapshot.getValue(DayModel.class);
-                todo1.setText(dayModel.todo1);
-                todo2.setText(dayModel.todo2);
-                todo3.setText(dayModel.todo3);
-                diary.setText(dayModel.diary);
+                if(dayModel != null) {
+                    todo1.setText(dayModel.todo1);
+                    todo2.setText(dayModel.todo2);
+                    todo3.setText(dayModel.todo3);
+                    diary.setText(dayModel.diary);
+                    if(dayModel.task1 == 1) {
+                        task1.setChecked(true);
+                    } else {
+                        task1.setChecked(false);
+                    }
+                    if(dayModel.task2 == 1) {
+                        task2.setChecked(true);
+                    } else {
+                        task2.setChecked(false);
+                    }
+                    if(dayModel.task3 == 1) {
+                        task3.setChecked(true);
+                    } else {
+                        task3.setChecked(false);
+                    }
+                }
             }
 
             @Override
@@ -72,7 +130,6 @@ public class DailyActivity extends AppCompatActivity {
             finish();
         } else {
             presstime = tempTime;
-            DayModel dayModel = new DayModel();
             dayModel.todo1 = todo1.getText().toString();
             dayModel.todo2 = todo2.getText().toString();
             dayModel.todo3 = todo3.getText().toString();
