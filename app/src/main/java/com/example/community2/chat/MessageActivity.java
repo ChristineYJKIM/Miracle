@@ -287,7 +287,6 @@ public class MessageActivity extends AppCompatActivity {
                     messageViewHolder.textView_message.setVisibility(View.VISIBLE);
                     messageViewHolder.textView_message.setText(comments.get(position).message);
                     messageViewHolder.textView_message.setBackgroundResource(R.drawable.chat_bubble);
-                    messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
                 } else {
                     messageViewHolder.textView_message.setVisibility(View.GONE);
                     messageViewHolder.imageView_selectPhoto.setVisibility(View.VISIBLE);
@@ -296,7 +295,7 @@ public class MessageActivity extends AppCompatActivity {
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
                 messageViewHolder.textView_message.setTextSize(20);
                 messageViewHolder.textView_message.setTextColor(Color.parseColor("#FFFFFF"));
-/*                messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);*/
+                messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
                 setReadCounter(position, messageViewHolder.textView_readCounter_left);
             } else {
                 if(comments.get(position).imageUrl == null) {
