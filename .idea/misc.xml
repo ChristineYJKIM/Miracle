@@ -85,10 +85,27 @@
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/fragment_calendar.xml" value="0.16" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/item_chat.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/item_message.xml" value="0.23125" />
+        <entry key="app/src/main/res/layout/activity_daily.xml" value="0.22192028985507245" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2511627197265625" />
+        <entry key="app/src/main/res/layout/activity_home2.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_message.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2749094202898551" />
+        <entry key="app/src/main/res/layout/content_logout.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.27556762695312503" />
+        <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.2246376811594203" />
+        <entry key="app/src/main/res/layout/input_file.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/layout/retrieved_layoute.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/todo_retrive.xml" value="0.2994011976047904" />
+        <entry key="app/src/main/res/layout/update_date.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/bottom_navigation_main.xml" value="0.1984375" />
+        <entry key="app/src/main/res/menu/logout.xml" value="0.1546875" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.1984375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

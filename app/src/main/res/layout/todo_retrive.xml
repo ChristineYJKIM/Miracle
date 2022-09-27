@@ -22,20 +22,33 @@ card_view:cardUseCompatPadding="true">
 
         <CheckBox
             android:id="@+id/chk_selected"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/habitcheckbox_custom"
+            android:button="@null"
+            android:fontFamily="@font/gmarketsans_medium"
+            android:textColor="@color/white" />
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/chk_selected"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="10dp" />-->
 
         <TextView
             android:id="@+id/txt_Name"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/chk_selected"
+            android:fontFamily="@font/gmarketsans_medium"
             android:layout_weight="1"
             android:padding="10dp"
-            android:text="아이템 이름"
+            android:text="습관 내용"
+            android:background="@android:color/transparent"
             android:textColor="@color/black"
             android:textSize="16dp" />
+
 
 
         <ImageButton

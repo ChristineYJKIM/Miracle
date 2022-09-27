@@ -87,6 +87,7 @@ public class DailyActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().getReference().child("daily").child(day + " " + clickMonth).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
+
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 DayModel dayModel = snapshot.getValue(DayModel.class);
                 if(dayModel != null) {

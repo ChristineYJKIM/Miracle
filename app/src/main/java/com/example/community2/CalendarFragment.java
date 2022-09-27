@@ -1,14 +1,14 @@
 package com.example.community2;
 
-import android.bluetooth.le.ScanSettings;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -16,25 +16,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.community2.model.DayModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 
 public class CalendarFragment extends Fragment implements CalendarAdapter.OnItemListener {
@@ -46,6 +42,10 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
     private CalendarAdapter calendarAdapter;
     private LinearLayout linearLayout;
     private EditText task1, task2;
+    private CheckBox check1, check2;
+    private HabitAdapter habitAdapter = new HabitAdapter(new HabitUtil());
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,8 +58,8 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         previousMonthBtn = v.findViewById(R.id.previousMonthBtn);
         nextMonthBtn = v.findViewById(R.id.nextMonthBtn);
         linearLayout = v.findViewById(R.id.calendarFragment_linearLayout);
-        task1 = v.findViewById(R.id.calendarFragment_habit_edittext1);
-        task2 = v.findViewById(R.id.calendarFragment_habit_edittext2);
+
+
 
         previousMonthBtn.setOnClickListener(view -> previousMonthAction());
         nextMonthBtn.setOnClickListener(view -> nextMonthAction());
@@ -68,9 +68,28 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         selectedDate = LocalDate.now();
         LocalDate now = LocalDate.now();
         setMonthView();
-        getHabit();
         return v;
+
+
+
+        
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        RecyclerView habitRecyclerView = view.findViewById(R.id.HabitRecyclerView);
+        // recyclerView의 리스트 형태를 세로 목록형으로 지정
+
+        habitRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), RecyclerView.VERTICAL, false));
+        // recyclerView에 어댑터 설정
+        habitRecyclerView.setAdapter(habitAdapter);
+
+
+    }
+
+
 
     private void setMonthView() {
         todayD = todayDate(selectedDate);
@@ -125,17 +144,40 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void getHabit() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        Log.d("selectedDate", String.valueOf(selectedDate));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
         int year = selectedDate.getYear();
         int month = selectedDate.getMonthValue();
         int day = selectedDate.getDayOfMonth();
 
-        String monthS = String.valueOf(month);
-        String dayS = String.valueOf(day);
 
-        String date = new StringBuilder().append(year).append("/")
-                .append(monthS).append("/")
+        //날짜가 고정값이라서 다른 날짜 클릭이 안 됨.
+
+
+        String monthS;
+        month = month;
+        if(month < 10) {
+            monthS = "0" + String.valueOf(month);
+        }else {
+            monthS = String.valueOf(month);
+        }
+
+
+        String dayS;
+        day = day;
+        if(day < 10) {
+            dayS = "0" + String.valueOf(day);
+        }else {
+            dayS = String.valueOf(day);
+        }
+
+
+
+        String date = new StringBuilder().append(year).append("-")
+                .append(monthS).append("-")
                 .append(dayS).toString();
+
         LocalDate selected = LocalDate.parse(date, formatter);
         Log.d("selected", selected.toString());
         Log.d("year", String.valueOf(year));
@@ -147,11 +189,16 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
                     @Override
                     public void onDataChange(@NonNull DataSnapshot datasnapshot) {
 
-                        // Log.d("넌 뭐니", String.valueOf(datasnapshot.getValue()));
+                        Log.d("넌 뭐니", String.valueOf(datasnapshot.getValue()));
 
                         String check = ""; //체크값 초기화
 
+                        ArrayList<String> calendar_habit = new ArrayList<>();
+
+                        //todo ArrayList<Model> calendar_habit = new ArrayList<>();
+
                         for (DataSnapshot item : datasnapshot.getChildren()) {
+
 
                             Model model = item.getValue(Model.class);
                             Log.d("모델", item.getValue(Model.class).getDate1());
@@ -160,29 +207,31 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
 
                             //LocalDate selectedDay = LocalDate.parse(LocalDate(selected, formatter);
 
-                            if (selected.compareTo(localDate1) < 0 || selected.compareTo(localDate2) > 0) {
+                            if (selectedDate.compareTo(localDate1) < 0 || selectedDate.compareTo(localDate2) > 0) {
                             } else {
                                 Log.d("선택날짜할일", item.toString());
 
                                 //check.add(getTask);
-                                check = check + item.getValue(Model.class).getTask();
+                                //할 일들을 한 스트링으로 만든 거
+                                //check = check + item.getValue(Model.class).getTask();
+                                calendar_habit.add(item.getValue(Model.class).getTask());
+                                //calendar_habit.add(item.getValue(Model.class) - model생성
+
+                                //calendar_habit
+                                //각각의 task 를 calendar_habbit에 그려짐 -> 어댑터에 담음 -> recyclerview에서 보여짐
+
                                 Log.d("check", check.toString());
 
-                                //체크박스뷰가 떠야한다 -> 리사이클러뷰 필요
+                                //할 일 안에 날짜가 하나 저장
+
 
                             }
                         }
+//                        task1.setText(check);
+//                        task2.setText(check);
+                        Log.d("습관창", String.valueOf(calendar_habit));
 
-
-                        //recyclerView.adapter.submitlist(check);
-                        //list adapter를 사용해서 구현해야할 것이다.
-                        task1.setText(check);
-
-                        //recyclerview 로 바꿀라면, check를 하려면 필요할 덧
-                        //리스트 -> 스트링타입?
-                        // 체크변수 타입을 List<String> 해야함 (122번줄을)
-
-
+                        habitAdapter.submitList(calendar_habit);
 
                     }
 
@@ -191,16 +240,34 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
                     }
 
                 });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onItemClick(int position, String dayText) {
+
         if (!dayText.equals("")) {
-            Intent intent = new Intent(getActivity(), DailyActivity.class);
-            intent.putExtra("day", dayText);
-            intent.putExtra("clickMonth", monthYearFromDate(selectedDate) );
-            startActivity(intent);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-" + dayText);
+            //selectedDate = monthYearFromDate(selectedDate);
+            Log.d("'일'만 찍혀라", dayText);
+            //LocalDate.parse(String.valueOf(selectedDate), formatter);
+            selectedDate = LocalDate.of(selectedDate.getYear(), selectedDate.getMonth(), Integer.parseInt(dayText));
+
+            Log.d("날짜형식", String.valueOf(LocalDate.of(selectedDate.getYear(),
+                    selectedDate.getMonth(), Integer.parseInt(dayText))));
+
+            //Log.d("날짜형식", String.valueOf(LocalDate.parse(String.valueOf(selectedDate), formatter)));
+            getHabit();
+
+
+
+//            Intent intent = new Intent(getActivity(), DailyActivity.class);
+//            intent.putExtra("day", dayText);
+//            intent.putExtra("clickMonth", monthYearFromDate(selectedDate) );
+//            startActivity(intent);
+
+
         }
     }
 }

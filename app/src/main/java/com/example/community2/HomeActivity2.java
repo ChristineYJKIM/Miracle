@@ -1,11 +1,5 @@
 package com.example.community2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -23,8 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -37,16 +34,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity2 extends AppCompatActivity {
 
 
 
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
+    private FloatingActionButton getout;
 
 
     private DatabaseReference reference;
@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home2);
 
         recyclerView = findViewById(R.id.recyclerview);
 
@@ -96,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID);
 
         floatingActionButton = findViewById(R.id.fab);
+        getout = findViewById(R.id.getoutBtn);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,16 +106,15 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+        getout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(HomeActivity.this, RealCalendarActivity.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(HomeActivity2.this, NavigationBarMainActivity.class);
+                startActivity(intent);
+                finishAffinity();
             }
 
         });
-
-
 
     }
 
@@ -156,7 +156,7 @@ public class HomeActivity extends AppCompatActivity {
         datestart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(HomeActivity.this, datePicker, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                new DatePickerDialog(HomeActivity2.this, datePicker, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -183,7 +183,7 @@ public class HomeActivity extends AppCompatActivity {
         dateclose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(HomeActivity.this, datePicker2, calendar2.get(Calendar.YEAR), calendar2.get(Calendar.MONTH),
+                new DatePickerDialog(HomeActivity2.this, datePicker2, calendar2.get(Calendar.YEAR), calendar2.get(Calendar.MONTH),
                         calendar2.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -226,11 +226,11 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(HomeActivity.this, "루틴이 추가되었습니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity2.this, "루틴이 추가되었습니다", Toast.LENGTH_SHORT).show();
                             loader.dismiss();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(HomeActivity.this, "저장실패", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity2.this, "저장실패", Toast.LENGTH_SHORT).show();
                             loader.dismiss();
                         }
                     }
@@ -379,7 +379,7 @@ public class HomeActivity extends AppCompatActivity {
         datestart2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(HomeActivity.this, datePicker, mcalendar.get(Calendar.YEAR), mcalendar.get(Calendar.MONTH),
+                new DatePickerDialog(HomeActivity2.this, datePicker, mcalendar.get(Calendar.YEAR), mcalendar.get(Calendar.MONTH),
                         mcalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -408,7 +408,7 @@ public class HomeActivity extends AppCompatActivity {
         dateclose2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(HomeActivity.this, datePicker2, mcalendar2.get(Calendar.YEAR), mcalendar2.get(Calendar.MONTH),
+                new DatePickerDialog(HomeActivity2.this, datePicker2, mcalendar2.get(Calendar.YEAR), mcalendar2.get(Calendar.MONTH),
                         mcalendar2.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -435,10 +435,10 @@ public class HomeActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
 
                         if (task.isSuccessful()) {
-                            Toast.makeText(HomeActivity.this, "업데이트 성공", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity2.this, "업데이트 성공", Toast.LENGTH_SHORT).show();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(HomeActivity.this, "업데이트에 실패했습니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity2.this, "업데이트에 실패했습니다", Toast.LENGTH_SHORT).show();
 
                         }
                     }
@@ -458,10 +458,10 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(HomeActivity.this, "루틴 삭제 성공", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity2.this, "루틴 삭제 성공", Toast.LENGTH_SHORT).show();
                         } else {
                             String error = task.getException().toString();
-                            Toast.makeText(HomeActivity.this, "루틴 삭제 실패", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity2.this, "루틴 삭제 실패", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -476,29 +476,34 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-
-
-            case R.id.logout :
-                mAuth.signOut();
-                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+//
+//        getMenuInflater().(R.menu.main_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//
+//
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//
+//
+//            case R.id.logout :
+//                mAuth.signOut();
+//                Intent intent = new Intent(HomeActivity2.this, LoginActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//                finish();
+//
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }
 
 

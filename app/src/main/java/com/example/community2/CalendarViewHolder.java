@@ -25,6 +25,11 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.
     public void onClick(View view)
     {
         onItemListener.onItemClick(getAdapterPosition(), (String) dayOfMonth.getText());
+
+        //누른 날짜를 보내야함
+        ////yyyy-MM-dd 형식으로 보내줘야함
+
+
     }
 }
 

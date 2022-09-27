@@ -23,13 +23,13 @@
 
             <TextView
                 android:id="@+id/dateTv"
-                android:layout_width="200dp"
-                android:layout_height="35dp"
-                android:textColor="#000"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:padding="10dp"
+                android:textColor="#000"
                 android:textSize="14sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 

@@ -9,8 +9,9 @@
     android:background="@drawable/intro_2"
     tools:context="com.example.community2.HomeActivity">
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/logoutBtn"
+        android:id="@+id/getoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -23,23 +24,22 @@
 
 
     <TextView
-        android:id="@+id/myPageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_marginLeft="30dp"
-        android:text="마이 페이지"
-        android:textColor="@color/mainblue"
-        android:textSize="45sp"
-        android:fontFamily="@font/gmarketsans_medium"/>
+        android:fontFamily="@font/gmarketsans_medium"
+        android:layout_marginTop="30dp"
+        android:text="만들고 싶은 습관을\n입력해주세요"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:text="습관변경"
-        android:textSize="30sp"
+        android:text="습관은 한 번에 3-5개 정도 권장드립니다\n습관은 마이페이지에서 변경/삭제/추가 가능합니다"
+        android:textSize="15sp"
         android:fontFamily="@font/gmarketsans_medium"
         android:textColor="@color/black"/>
 
@@ -70,9 +70,6 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
 
 
 </LinearLayout>

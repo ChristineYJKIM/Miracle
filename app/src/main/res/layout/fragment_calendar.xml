@@ -167,6 +167,39 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingLeft="20dp"-->
+<!--            android:paddingBottom="10dp">-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/calendarFragment_habit_checkBox1"-->
+<!--                android:layout_width="20dp"-->
+<!--                android:layout_height="20dp"-->
+<!--                android:background="@drawable/habitcheckbox_custom"-->
+<!--                android:button="@null"-->
+<!--                android:fontFamily="@font/gmarketsans_medium"-->
+<!--                android:textColor="@color/white" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/calendarFragment_habit_edittext1"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:fontFamily="@font/gmarketsans_medium"-->
+<!--                android:hint="습관 내용"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </LinearLayout>-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="10dp"></LinearLayout>-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -174,57 +207,33 @@
             android:paddingLeft="20dp"
             android:paddingBottom="10dp">
 
-            <CheckBox
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/habitcheckbox_custom"
-                android:button="@null"
-                android:fontFamily="@font/gmarketsans_medium"
-                android:textColor="@color/white" />
+<!--            <CheckBox-->
+<!--                android:id="@+id/calendarFragment_habit_checkBox2"-->
+<!--                android:layout_width="20dp"-->
+<!--                android:layout_height="20dp"-->
+<!--                android:background="@drawable/habitcheckbox_custom"-->
+<!--                android:button="@null"-->
+<!--                android:fontFamily="@font/gmarketsans_medium"-->
+<!--                android:textColor="@color/white" />-->
 
-            <EditText
-                android:id="@+id/calendarFragment_habit_edittext1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/gmarketsans_medium"
-                android:hint="습관 내용"
-                android:paddingLeft="10dp"
-                android:textSize="15sp" />
+<!--            <EditText-->
+<!--                android:id="@+id/calendarFragment_habit_edittext2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:fontFamily="@font/gmarketsans_medium"-->
+<!--                android:hint="습관 내용"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:textSize="15sp" />-->
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="10dp"></LinearLayout>
-
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/HabitRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp"
-            android:paddingBottom="10dp">
-
-            <CheckBox
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/todocheckbox_custom"
-                android:button="@null"
-                android:fontFamily="@font/gmarketsans_medium"
-                android:textColor="@color/white" />
-
-            <EditText
-                android:id="@+id/calendarFragment_habit_edittext2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/gmarketsans_medium"
-                android:hint="습관 내용"
-                android:paddingLeft="10dp"
-                android:textSize="15sp" />
-        </LinearLayout>
+            android:layout_below="@id/whatDay" />
 
 
     </LinearLayout>

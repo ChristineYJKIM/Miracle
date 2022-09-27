@@ -129,9 +129,8 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/gmarketsans_medium"
-                android:text="실행\n기간"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:text="실행기간"
+                android:textColor="#000" />
 
         </RelativeLayout>
 
@@ -149,9 +148,9 @@
                 android:layout_marginBottom="10dp"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
+                android:fontFamily="@font/gmarketsans_medium"
                 android:hint="시작 날짜"
                 android:textColor="@color/black"
-                android:fontFamily="@font/gmarketsans_medium"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -165,14 +164,13 @@
                 android:id="@+id/dateClose2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/gmarketsans_medium"
                 android:hint="종료 날짜"
                 android:textColor="@color/black"
-                android:fontFamily="@font/gmarketsans_medium"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </RelativeLayout>
 

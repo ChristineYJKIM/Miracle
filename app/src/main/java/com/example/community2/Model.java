@@ -1,12 +1,19 @@
 package com.example.community2;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Model {
 
+
+
     private String task, description, id, date, date1, date2;
+
 
     public Model(){
 
     }
+
 
 
 
@@ -49,6 +56,9 @@ public class Model {
     public String getDate1() { return date1;}
 
     public String getDate2() { return date2;}
+
+
+
 
 
 }
