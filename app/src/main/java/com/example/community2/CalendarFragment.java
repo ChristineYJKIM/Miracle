@@ -68,6 +68,7 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         selectedDate = LocalDate.now();
         LocalDate now = LocalDate.now();
         setMonthView();
+        getHabit();
         return v;
     }
 
@@ -123,21 +124,16 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    @Override
-    public void onItemClick(int position, String dayText) {
+    public void getHabit() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         int year = selectedDate.getYear();
         int month = selectedDate.getMonthValue();
+        int day = selectedDate.getDayOfMonth();
 
         String monthS = String.valueOf(month);
-        String dayS;
-        if(Integer.parseInt(dayText) < 10) {
-            dayS = "0" + dayText;
-        }else {
-            dayS = dayText;
-        }
+        String dayS = String.valueOf(day);
 
-        String date = new StringBuilder().append(year).append("-")
+        String date = new StringBuilder().append(year).append("/")
                 .append(monthS).append("/")
                 .append(dayS).toString();
         LocalDate selected = LocalDate.parse(date, formatter);
@@ -195,6 +191,11 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
                     }
 
                 });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onItemClick(int position, String dayText) {
         if (!dayText.equals("")) {
             Intent intent = new Intent(getActivity(), DailyActivity.class);
             intent.putExtra("day", dayText);
