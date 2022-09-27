@@ -63,8 +63,6 @@ public class HomeActivity2 extends AppCompatActivity {
 
 
 
-
-    //14강..이걸 왜 선언한걸까?
     private String key = "";
     private String task;
     private String description;
@@ -450,7 +448,6 @@ public class HomeActivity2 extends AppCompatActivity {
 
 
 
-        //14강...삭제버튼 누르면 액션 취하게끔 작성해야함!
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

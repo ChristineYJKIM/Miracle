@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:background="@drawable/intro_2"
-    tools:context=".fragment.MyPageFragment">
+    tools:context="com.example.community2.HomeActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="go_to_calendar"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        app:tint="@null" />
+
 
     <TextView
         android:id="@+id/myPageTitle"
@@ -16,20 +31,17 @@
         android:text="마이 페이지"
         android:textColor="@color/mainblue"
         android:textSize="45sp"
-        android:fontFamily="@font/gmarketsans_medium" />
+        android:fontFamily="@font/gmarketsans_medium"/>
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/myPageTitle"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@null"
+        android:layout_marginTop="20dp"
+        android:text="습관변경"
+        android:textSize="30sp"
         android:fontFamily="@font/gmarketsans_medium"
-        android:onClick="changeHabit"
-        android:text="습관 변경"
-        android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textColor="@color/black"/>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -40,7 +52,7 @@
             android:layout_width="340dp"
             android:layout_height="444dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="40dp"
             android:scrollbars="vertical"
 
@@ -59,4 +71,8 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</RelativeLayout>
+
+
+
+
+</LinearLayout>

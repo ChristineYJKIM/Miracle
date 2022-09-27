@@ -18,9 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,7 +26,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.community2.HomeActivity;
 import com.example.community2.LoginActivity;
 import com.example.community2.Model;
 import com.example.community2.R;
@@ -45,12 +41,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.zip.Inflater;
 
 public class MyPageFragment extends Fragment {
 
@@ -81,8 +75,8 @@ public class MyPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         //return inflater.inflate(R.layout.fragment_my_page, container, false);
-        return inflater.inflate(R.layout.activity_home, container, false);
+        return inflater.inflate(R.layout.fragment_my_page, container, false);
+       // return inflater.inflate(R.layout.fragment_my_page, container, false);
 
 
     }

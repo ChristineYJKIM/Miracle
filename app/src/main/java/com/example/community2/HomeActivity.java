@@ -43,8 +43,6 @@ import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
 
-
-
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
 
@@ -55,7 +53,6 @@ public class HomeActivity extends AppCompatActivity {
     private String onlineUserID;
 
     private ProgressDialog loader;
-    private FloatingActionButton calendarBtn;
 
 
     private EditText datestart;
@@ -63,8 +60,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-
-    //14강..이걸 왜 선언한걸까?
     private String key = "";
     private String task;
     private String description;
@@ -76,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.fragment_my_page);
 
         recyclerView = findViewById(R.id.recyclerview);
 
@@ -104,16 +99,6 @@ public class HomeActivity extends AppCompatActivity {
             }
 
         });
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                /*Intent intent = new Intent(HomeActivity.this, RealCalendarActivity.class);
-                startActivity(intent);*/
-            }
-
-        });
-
 
 
     }
@@ -325,7 +310,6 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         public void setDate2(String date2){
-            //여기에 캘린더 데이터값을 저장시킨다.
 
         }
     }
@@ -450,7 +434,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        //14강...삭제버튼 누르면 액션 취하게끔 작성해야함!
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
