@@ -18,7 +18,7 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
         android:contentDescription="go_to_calendar"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:src="@drawable/logout"
         app:tint="@null" />
 
 

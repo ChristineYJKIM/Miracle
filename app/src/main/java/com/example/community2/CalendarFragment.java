@@ -28,10 +28,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.MalformedParameterizedTypeException;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class CalendarFragment extends Fragment implements CalendarAdapter.OnItemListener {
@@ -179,6 +183,7 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
 
                         ArrayList<String> calendar_habit = new ArrayList<>();
 
+
                         //todo ArrayList<Model> calendar_habit = new ArrayList<>();
 
                         for (DataSnapshot item : datasnapshot.getChildren()) {
@@ -216,7 +221,6 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
                         Log.d("습관창", String.valueOf(calendar_habit));
 
                         habitAdapter.submitList(calendar_habit);
-
                     }
 
                     @Override

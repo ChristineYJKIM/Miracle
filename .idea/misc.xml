@@ -80,14 +80,20 @@
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/Community2/app/src/main/res/menu/bottom_navigation_main.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_daily.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_home2.xml" value="0.23125" />
+        <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_login.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_message.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_real_calendar.xml" value="0.23125" />
+        <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/activity_signup.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/calendar_cell.xml" value="0.23125" />
+        <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/dialog.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/fragment_calendar.xml" value="0.16" />
+        <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/fragment_my_page.xml" value="0.23125" />
+        <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/input_file.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/item_chat.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/item_message.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/retrieved_layoute.xml" value="0.23125" />
         <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/todo_retrive.xml" value="0.23125" />
+        <entry key="..\:/Users/reare/Desktop/assignment/StudyJam/MainBranch/app/src/main/res/layout/update_date.xml" value="0.23125" />
       </map>
     </option>
   </component>

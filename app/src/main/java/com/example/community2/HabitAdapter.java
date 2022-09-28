@@ -1,6 +1,5 @@
 package com.example.community2;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 public class HabitAdapter extends ListAdapter<String, HabitAdapter.MyViewHolder> {
         //string -> model로 고쳐...
@@ -34,32 +23,15 @@ public class HabitAdapter extends ListAdapter<String, HabitAdapter.MyViewHolder>
         public static class MyViewHolder extends RecyclerView.ViewHolder {
 
             private TextView habitName;
-            private CheckBox checkBox;
-
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
 
                 habitName = itemView.findViewById(R.id.txt_Name);
-                checkBox = itemView.findViewById(R.id.chk_selected);
             }
 
             private void bind(String strNum) {
                 habitName.setText(strNum);
-
-                checkBox.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                       // checkBox.setChecked(!checkBox.isChecked());
-                        //체크된 상태에서 누르면 체크 해제
-                        //현재 상태의 반대 상태로 세팅해줌
-
-
-
-
-                    }
-                });
             }
 
 

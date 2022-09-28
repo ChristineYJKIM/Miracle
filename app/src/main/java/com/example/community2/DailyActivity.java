@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.community2.model.DayModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,6 +35,7 @@ public class DailyActivity extends AppCompatActivity {
 
     private long presstime = 0;
     private final long finishtimeed = 1000;
+    private String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +87,7 @@ public class DailyActivity extends AppCompatActivity {
         clickMonth= getIntent().getStringExtra("clickMonth");
         day = getIntent().getStringExtra("day");
 
-        FirebaseDatabase.getInstance().getReference().child("daily").child(day + " " + clickMonth).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("daily").child(uid).child(day + " " + clickMonth).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
 
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -135,7 +137,7 @@ public class DailyActivity extends AppCompatActivity {
             dayModel.todo2 = todo2.getText().toString();
             dayModel.todo3 = todo3.getText().toString();
             dayModel.diary = diary.getText().toString();
-            FirebaseDatabase.getInstance().getReference().child("daily").child(day + " " + clickMonth).setValue(dayModel);
+            FirebaseDatabase.getInstance().getReference().child("daily").child(uid).child(day + " " + clickMonth).setValue(dayModel);
         }
     }
 }
