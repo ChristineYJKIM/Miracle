@@ -293,7 +293,7 @@ public class MessageActivity extends AppCompatActivity {
                     Glide.with(MessageActivity.this).load(comments.get(position).imageUrl).into(messageViewHolder.imageView_selectPhoto);
                 }
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_message.setTextSize(20);
+                messageViewHolder.textView_message.setTextSize(15);
                 messageViewHolder.textView_message.setTextColor(Color.parseColor("#FFFFFF"));
                 messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
                 setReadCounter(position, messageViewHolder.textView_readCounter_left);
@@ -310,7 +310,7 @@ public class MessageActivity extends AppCompatActivity {
                 }
                 messageViewHolder.textView_name.setText(users.get(comments.get(position).uid).userName);
                 messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_message.setTextSize(20);
+                messageViewHolder.textView_message.setTextSize(15);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
                 setReadCounter(position, messageViewHolder.textView_readCounter_right);
             }

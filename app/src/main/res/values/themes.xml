@@ -2,6 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Community2" parent="Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/mainblue</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light">

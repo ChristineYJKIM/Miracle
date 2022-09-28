@@ -29,13 +29,15 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="3">
 
         <ImageView
             android:id="@+id/messageActivity_imageview"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_photo_size_select_actual_24" />
+            android:src="@drawable/ic_baseline_photo_size_select_actual_24"
+            android:layout_weight="1"/>
 
         <EditText
             android:id="@+id/messageActivity_editText"
@@ -43,7 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/messageActivity_button" />
+            android:layout_toLeftOf="@+id/messageActivity_button"
+            android:layout_weight="1"/>
 
         <ImageButton
             android:id="@+id/messageActivity_button"
@@ -52,7 +55,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:background="@null"
-            android:src="@drawable/ic_baseline_send_24" />
+            android:src="@drawable/ic_baseline_send_24"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

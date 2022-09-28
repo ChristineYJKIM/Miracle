@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Community2</string>
+    <string name="app_name">miracle</string>
     <string name="back"><![CDATA[<]]></string>
     <string name="forward"><![CDATA[>]]></string>
     <string name="title_activity_settings">SettingsActivity</string>

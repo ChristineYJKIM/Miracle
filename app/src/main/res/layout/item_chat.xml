@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="75dp">
+    android:layout_height="60dp">
 
     <RelativeLayout
         android:orientation="vertical"
@@ -11,14 +11,14 @@
 
         <TextView
             android:id="@+id/chatitem_textview_title"
-            android:text="방 이름"
-            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/kopub_bold"
-            android:textColor="@color/black"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/gmarketsans_medium"
+            android:text="방 이름"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/chatitem_textview_lastMessage"
@@ -38,9 +38,10 @@
             android:layout_margin="10dp"
             android:layout_marginRight="20dp"
             android:textColor="@android:color/darker_gray"
-            android:textSize="15dp"
+            android:textSize="12dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kopub_light"/>
 
         <LinearLayout
             android:background="#000000"

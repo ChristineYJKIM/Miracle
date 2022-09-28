@@ -120,7 +120,7 @@ public class DailyActivity extends AppCompatActivity {
 
             }
         });
-        textView.setText(day + " . " + clickMonth);
+        textView.setText(day + " / " + clickMonth);
     }
 
     @Override

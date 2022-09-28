@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/back"
-            android:textColor="@color/gray"
+            android:textColor="@color/darkgray"
             android:background="@null"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -35,10 +35,10 @@
             android:layout_weight="2"
             android:layout_height="wrap_content"
             android:text="Aug 2022"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:fontFamily="@font/lato_black"/>
+            android:fontFamily="@font/gmarketsans_light"/>
 
         <Button
             android:id="@+id/nextMonthBtn"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/forward"
-            android:textColor="@color/gray"
+            android:textColor="@color/darkgray"
             android:background="@null"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -162,11 +162,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:fontFamily="@font/lato_bold"
+            android:fontFamily="@font/gmarketsans_medium"
             android:gravity="center"
-            android:text="today"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:text="to do list and diary"
+            android:textColor="@color/mainblue"
+            android:textSize="18sp" />
+
 
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->

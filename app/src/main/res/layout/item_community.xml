@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="75dp">
+    android:layout_height="60dp">
 
     <LinearLayout
         android:id="@+id/communityItem_linearlayout"
@@ -14,12 +14,12 @@
         <TextView
             android:id="@+id/communityItem_textview_name"
             android:text="커뮤니티 이름"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:fontFamily="@font/kopub_bold"/>
+            android:fontFamily="@font/gmarketsans_medium"/>
 
         <TextView
             android:id="@+id/communityItem_textview_explain"
@@ -29,8 +29,8 @@
             android:layout_marginLeft="20dp"
             android:text="커뮤니티 설명"
             android:textColor="@color/black"
-            android:textSize="16dp"
-            android:fontFamily="@font/kopub_medium"/>
+            android:textSize="16sp"
+            android:fontFamily="@font/gmarketsans_light"/>
 
         <LinearLayout
             android:background="@android:color/darker_gray"

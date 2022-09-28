@@ -17,7 +17,7 @@
             android:id="@+id/textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_heavy"
+            android:fontFamily="@font/gmarketsans_medium"
             android:textColor="@color/darkmainblue"
             android:textSize="20sp" />
 
@@ -25,17 +25,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:padding="18dp"
+        android:padding="20dp"
         android:background="@drawable/diarypage_round_rect">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_black"
+            android:fontFamily="@font/gmarketsans_medium"
             android:text="to do list"
             android:textSize="18sp"
             android:textColor="@color/darkmainblue"/>
@@ -133,14 +134,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="430dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/diarypage_round_rect"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="match_parent"

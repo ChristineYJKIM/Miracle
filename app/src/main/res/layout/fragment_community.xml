@@ -13,22 +13,27 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="2">
 
 
             <EditText
                 android:id="@+id/communityFragment_edittext"
-                android:hint="검색"
-                android:layout_marginTop="10dp"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gmarketsans_medium"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/gmarketsans_medium"
+                android:textSize="18sp"
+                android:hint="검색"
+                android:layout_weight="1"/>
 
             <ImageButton
-                android:src="@drawable/ic_baseline_search_24"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@null"/>
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_search_24" />
 
         </LinearLayout>
 
@@ -54,15 +59,19 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/communityFragment_floatingbutton"
-        android:src="@drawable/communitymbbutton"
-        android:backgroundTint="@color/mainblue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
-        app:fabSize="normal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/mainblue"
+        android:src="@drawable/ic_baseline_add_24"
+        app:backgroundTint="#FFFFFF"
+        app:fabSize="normal" />
 
 
 </RelativeLayout>

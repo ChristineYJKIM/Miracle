@@ -3,17 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:elevation="10dp"
-    android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/round_rect">
+    android:layout_marginTop="20dp"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="15dp"
-        android:layout_margin="15dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,11 +40,11 @@
                 android:id="@+id/taskTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="습관"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:padding="5dp"
+                android:textSize="18sp"
                 android:maxLines="1"
                 android:textColor="#000"
                 android:fontFamily="@font/gmarketsans_medium"/>
@@ -55,11 +53,13 @@
                 android:id="@+id/descriptionTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
                 android:textColor="#000"
                 android:text="설명"
-                android:textSize="15sp"
-                android:fontFamily="@font/gmarketsans_medium"/>
+                android:textSize="18sp"
+                android:fontFamily="@font/gmarketsans_light"/>
 
 
 

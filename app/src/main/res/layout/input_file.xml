@@ -5,17 +5,16 @@
     android:layout_width="wrap_content"
     android:orientation="vertical"
     android:layout_height="wrap_content"
-    android:background="@drawable/round_rect_calendar">
+    android:background="@null">
 
     <TextView
         android:layout_width="397dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:padding="5dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
         android:text="습관 추가하기"
-        android:fontFamily="@font/gmarketsans_medium"
-        android:textColor="@color/mainblue"
+        android:fontFamily="@font/gmarketsans_light"
+        android:textColor="@color/black"
         android:textSize="30sp" />
     
     <LinearLayout
@@ -39,7 +38,7 @@
                 android:text="습관"
                 android:textColor="#000"
                 android:textSize="20sp"
-                android:fontFamily="@font/gmarketsans_medium"/>
+                android:fontFamily="@font/gmarketsans_light"/>
 
         </RelativeLayout>
 
@@ -56,10 +55,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/gmarketsans_light"
                 android:hint="습관명을 적어주세요"
                 android:textColor="#000"
-                android:textColorHint="#969696"
-                android:fontFamily="@font/gmarketsans_medium"/>
+                android:textColorHint="#969696" />
         </RelativeLayout>
 
 
@@ -80,11 +79,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/gmarketsans_light"
                 android:text="설명"
                 android:textColor="#000"
-                android:textSize="20sp"
-                android:fontFamily="@font/gmarketsans_medium"
-                android:layout_margin="10dp"/>
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -101,10 +103,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:hint="Routine description"
+                android:fontFamily="@font/gmarketsans_light"
+                android:hint="습관에 대한 설명 적어주세요"
                 android:textColor="#000"
-                android:textColorHint="#969696"
-                android:fontFamily="@font/gmarketsans_medium"/>
+                android:textColorHint="#969696" />
         </RelativeLayout>
 
 
@@ -129,9 +131,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/gmarketsans_medium"
-                android:text="실행기간"
-                android:textColor="#000" />
+                android:fontFamily="@font/gmarketsans_light"
+                android:text="실행\n기간"
+                android:textColor="#000"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -149,7 +152,7 @@
                 android:layout_marginBottom="10dp"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                android:fontFamily="@font/gmarketsans_medium"
+                android:fontFamily="@font/gmarketsans_light"
                 android:hint="시작 날짜"
                 android:textColor="#000"
                 android:textColorHint="#969696"
@@ -170,7 +173,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/gmarketsans_medium"
+                android:fontFamily="@font/gmarketsans_light"
                 android:hint="종료 날짜"
                 android:textColor="#000"
                 android:textColorHint="#969696"
@@ -207,12 +210,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="@color/mainblue"
+                android:fontFamily="@font/gmarketsans_medium"
                 android:text="저장"
                 android:textAllCaps="false"
                 android:textColor="#fff"
-                android:background="@color/mainblue"
-                android:textSize="20sp"
-                android:fontFamily="@font/gmarketsans_medium"/>
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <RelativeLayout

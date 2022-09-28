@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:fontFamily="@font/gmarketsans_medium"
+        android:fontFamily="@font/gmarketsans_light"
         android:textSize="20sp"
         android:textColor="@color/black"/>
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:fontFamily="@font/gmarketsans_medium"
+        android:fontFamily="@font/gmarketsans_light"
         android:textSize="20sp"
         android:textColor="@color/black"/>
 
