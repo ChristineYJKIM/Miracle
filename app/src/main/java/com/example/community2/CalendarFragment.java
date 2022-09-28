@@ -1,5 +1,6 @@
 package com.example.community2;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -41,11 +42,8 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
     private Button previousMonthBtn, nextMonthBtn;
     private CalendarAdapter calendarAdapter;
     private LinearLayout linearLayout;
-    private EditText task1, task2;
-    private CheckBox check1, check2;
+    private TextView dailyCheck;
     private HabitAdapter habitAdapter = new HabitAdapter(new HabitUtil());
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,43 +51,29 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        calendarRecyclerView = v.findViewById(R.id.calendarRecyclerView);
-        monthYearText = v.findViewById(R.id.monthYearTV);
-        previousMonthBtn = v.findViewById(R.id.previousMonthBtn);
-        nextMonthBtn = v.findViewById(R.id.nextMonthBtn);
-        linearLayout = v.findViewById(R.id.calendarFragment_linearLayout);
-
-
-
-        previousMonthBtn.setOnClickListener(view -> previousMonthAction());
-        nextMonthBtn.setOnClickListener(view -> nextMonthAction());
-
-
-        selectedDate = LocalDate.now();
-        LocalDate now = LocalDate.now();
-        setMonthView();
-        return v;
-
-
-
-        
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        RecyclerView habitRecyclerView = view.findViewById(R.id.HabitRecyclerView);
+        RecyclerView habitRecyclerView = v.findViewById(R.id.HabitRecyclerView);
         // recyclerView의 리스트 형태를 세로 목록형으로 지정
 
         habitRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), RecyclerView.VERTICAL, false));
         // recyclerView에 어댑터 설정
         habitRecyclerView.setAdapter(habitAdapter);
 
+        calendarRecyclerView = v.findViewById(R.id.calendarRecyclerView);
+        monthYearText = v.findViewById(R.id.monthYearTV);
+        previousMonthBtn = v.findViewById(R.id.previousMonthBtn);
+        nextMonthBtn = v.findViewById(R.id.nextMonthBtn);
+        linearLayout = v.findViewById(R.id.calendarFragment_linearLayout);
+        dailyCheck = v.findViewById(R.id.dailyCheck);
 
+        previousMonthBtn.setOnClickListener(view -> previousMonthAction());
+        nextMonthBtn.setOnClickListener(view -> nextMonthAction());
+
+        selectedDate = LocalDate.now();
+        LocalDate now = LocalDate.now();
+        setMonthView();
+        getHabit();
+        return v;
     }
-
-
 
     private void setMonthView() {
         todayD = todayDate(selectedDate);
@@ -260,14 +244,15 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
             //Log.d("날짜형식", String.valueOf(LocalDate.parse(String.valueOf(selectedDate), formatter)));
             getHabit();
 
-
-
-//            Intent intent = new Intent(getActivity(), DailyActivity.class);
-//            intent.putExtra("day", dayText);
-//            intent.putExtra("clickMonth", monthYearFromDate(selectedDate) );
-//            startActivity(intent);
-
-
+            dailyCheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), DailyActivity.class);
+                    intent.putExtra("day", dayText);
+                    intent.putExtra("clickMonth", monthYearFromDate(selectedDate));
+                    startActivity(intent);
+                }
+            });
         }
     }
 }

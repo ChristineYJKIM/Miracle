@@ -1,5 +1,6 @@
 package com.example.community2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,18 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 public class HabitAdapter extends ListAdapter<String, HabitAdapter.MyViewHolder> {
         //string -> model로 고쳐...
-
-
 
         // ListAdapter의 생성자
         protected HabitAdapter(@NonNull DiffUtil.ItemCallback<String> diffCallback) {

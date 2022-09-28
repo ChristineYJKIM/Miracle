@@ -135,12 +135,7 @@ public class DailyActivity extends AppCompatActivity {
             dayModel.todo2 = todo2.getText().toString();
             dayModel.todo3 = todo3.getText().toString();
             dayModel.diary = diary.getText().toString();
-            FirebaseDatabase.getInstance().getReference().child("daily").child(day + " " + clickMonth).setValue(dayModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Toast.makeText(DailyActivity.this, "작성내용이 저장되었습니다.", Toast.LENGTH_SHORT).show();
-                }
-            });
+            FirebaseDatabase.getInstance().getReference().child("daily").child(day + " " + clickMonth).setValue(dayModel);
         }
     }
 }
